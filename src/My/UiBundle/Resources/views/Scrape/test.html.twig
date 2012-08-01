@@ -1,0 +1,14 @@
+{% extends 'MyUiBundle::layout.html.twig' %}
+
+{% block title %}TEST &mdash; {{ parent() }}{% endblock %}
+
+{% block content %}
+	<h5>Test</h5>
+
+    <h6>Categories</h6>
+    {% for category in categories %}
+        <p>{{ category.name }}</p>
+    {% endfor %}
+
+{% endblock %}
+

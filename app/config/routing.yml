@@ -1,0 +1,4 @@
+MyUiBundle:
+    resource: "@MyUiBundle/Controller/"
+    type:     annotation
+    prefix:   /

@@ -1,0 +1,13 @@
+{% extends 'MyUiBundle::layout.html.twig' %}
+
+{% block title %}{{ torrent.title.name }} &mdash; {{ parent() }}{% endblock %}
+
+{% block content %}
+	<h5>Set pirate for {{ torrent.titleOriginal }}</h5>
+	
+	<form action="" method="post" {{ form_enctype(form) }}>
+		{{ form_widget(form) }}
+		<input type="submit" />
+	</form>
+{% endblock %}
+

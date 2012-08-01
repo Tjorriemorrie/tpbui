@@ -1,0 +1,72 @@
+{% extends 'MyUiBundle::layout.html.twig' %}
+
+{% block title %}Scrape &mdash; {{ parent() }}{% endblock %}
+
+{% block content %}
+	<h5>Not inspected</h5>
+	{% if torrents is not empty %}
+		<table class="table" cellspacing="0" cellpadding="0">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Category</th>
+				<th>Title</th>
+				<th>Uploader</th>
+				<th>Popularity</th>
+				<th>Size</th>
+				<th>Pirate</th>
+				<th>Extended</th>
+				<th>Inspected</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for torrent in torrents %}
+			<tr>
+				<td><a href="http://thepiratebay.org/torrent/{{ torrent.id }}" target="_newtab">{{ torrent.id }}</a></td>
+				<td>{{ torrent.category.name }}</td>
+				<td>
+					<a href="{{ path('settitle', { 'id': torrent.id }) }}">{{ torrent.title.name }}</a>
+					<br><span class="lighter">{{ torrent.titleOriginal }}</span>
+				</td>
+				<td>{{ torrent.uploader.name }}</td>
+				<td>{{ torrent.popularity }} ({{ torrent.demands.last.seeders }}/{{ torrent.demands.last.leechers }})</td>
+				<td>{{ torrent.size }}</td>
+				
+				<td><a href="{{ path('setpirate', { 'id': torrent.id }) }}">{% if torrent.pirate.name is defined %}{{ torrent.pirate.name }}{% else %}&lt;not set&gt;{% endif %}</a></td>
+				
+				<td>
+					{% if torrent.category.code is sameas(207) or torrent.category.code is sameas(201) %}
+						<a href="{{ path('inspectone', { 'id': torrent.id }) }}">{% if torrent.movie is not null %}
+							{{ torrent.movie.source }}@{{ torrent.movie.quality }} [{{ torrent.movie.releasedAt.format('Y') }}]
+							<br>{% if torrent.movie.uncut is sameas(true) %}[Uncut] {% endif %}
+							{% if torrent.movie.unrated is sameas(true) %}[Unrated] {% endif %}
+							{% if torrent.movie.extended is sameas(true) %}[Extended] {% endif %}
+						{% else %}movie not set{% endif %}</a>
+				
+					{% elseif torrent.category.code is sameas(205) or torrent.category.code is sameas(208) %}
+						<a href="{{ path('setshow', { 'id': torrent.id }) }}">{% if torrent.show is not null %}
+							{{ torrent.show.quality }}
+							<br>{% if torrent.show.series is defined %}{{ torrent.show.series }}{% endif %}
+							S{% if torrent.show.season is defined %}{{ torrent.show.season }}{% endif %}E{% if torrent.show.episode is defined %}{{ torrent.show.episode }}{% endif %}
+						{% else %}show not set{% endif %}</a>
+					
+					{% elseif torrent.category.code is sameas(401) %}
+						<a href="{{ path('setgame', { 'id': torrent.id }) }}">{% if torrent.game is not null %}
+							{{ torrent.game.releasedAt.format('Y') }}
+						{% else %}game not set{% endif %}</a>
+								
+					{% else %}todo{% endif %}
+				</td>
+				
+				<td>
+					<a href="{{ path('setinspected', { 'id': torrent.id }) }}">{% if torrent.inspected is sameas(true) %}Yes{% else %}No{% endif %}</a>
+					&mdash;
+					<a href="{{ path('delete', { 'id': torrent.id }) }}">del</a>
+				</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+		</table>
+	{% else %}no more to inspect{% endif %}
+{% endblock %}
+

@@ -1,0 +1,7 @@
+<p class="q">{{ q }}</p>
+{% for similar in similars %}
+	{{ similar|raw }}
+{% else %}
+	no hits
+{% endfor %}
+

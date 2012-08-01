@@ -1,0 +1,11 @@
+{% for torrent in torrents %}
+	<li id="{{ torrent.id }}">
+		<a class="linkTorrent" href="#torrent">{{ torrent.titleOriginal }}</a>
+		<dl class="torrentActions cf">
+			<dt>Actions:</dt>
+			<dd><a href="http://thepiratebay.se/torrent/{{ torrent.id }}" target="_tab"><img src="{{ asset('img/tpb.gif') }}" alt="The Pirate Bay"></a></dd>
+			<dd><a class="linkBusy" href="#bad" title="normal"><img src="{{ asset('img/yes.jpg') }}" alt="yes"></a></dd>
+			<dd><a class="linkBusy" href="#bad" title="bad"><img src="{{ asset('img/no.jpg') }}" alt="no"></a></dd>
+		</dl>
+	</li>
+{% endfor %}

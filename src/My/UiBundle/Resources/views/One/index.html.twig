@@ -1,0 +1,50 @@
+{% extends 'MyUiBundle::layout.html.twig' %}
+
+{% block title %}Home &mdash; {{ parent() }}{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script type="text/javascript" src="{{ asset('js/one.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+	{{ parent() }}
+	
+	<h6 id="status">&nbsp;</h6>
+	
+	<div class="box boxFull cf">
+		<h3 class="title">New Torrents</h3>
+		{% for key, category in categories %}
+			{% if key == 3 %}
+				<div class="clear"></div>
+			{% endif %}
+			<div id="{{ category.id }}" class="category box boxThird cf">
+				<h3 class="title">{{ category.name }}</h3>
+				<ul></ul>
+			</div>
+		{% endfor %}
+	</div>
+	
+
+	<div id="busy" class="box boxThird cf">
+		<h3 class="title">Busy Downloading Torrents</h3>
+		<ul>
+		</ul>
+	</div>
+
+	
+	<div id="done" class="box boxThird cf">
+		<h3 class="title">Recently Finished Torrents</h3>
+		<ul>
+		</ul>
+	</div>
+	
+
+	<div id="bad" class="box boxThird cf">
+		<h3 class="title">Unwanted Torrents</h3>
+		<ul>
+		</ul>
+	</div>
+	
+{% endblock %}
+

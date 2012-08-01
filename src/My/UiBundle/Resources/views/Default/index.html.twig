@@ -1,0 +1,110 @@
+{% extends 'MyUiBundle::layout.html.twig' %}
+
+{% block title %}Home &mdash; {{ parent() }}{% endblock %}
+
+{% block content %}
+	<h5><a href="{{ path('scrape') }}">Scrape</a></h5>
+	
+	<br><h4>Queue</h4>
+	{% if queue is not empty %}
+		{% for title in queue %}
+			{% for torrent in title.torrents %}
+				{% if torrent.status is sameas(3) %}
+					<h5>
+						<a href="{{ path('action', { 'do': 'finished', 'id': torrent.id }) }}"><img src="{{ asset('/img/yes.jpg') }}" /></a>
+						<a href="{{ path('action', { 'do': 'cancelled', 'id': torrent.id }) }}"><img src="{{ asset('/img/no.jpg') }}" /></a>
+						{{ torrent.title.name }}
+					</h5>
+				{% endif %}
+			{% endfor %}
+		{% endfor %}
+	{% else %}<h6>empty</h6>{% endif %}
+	
+	<br><h4>Title</h4>
+	{% if titles is not empty %}
+		<table class="table" cellspacing="0" cellpadding="0">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Category</th>
+				<th>Uploader</th>
+				<th>Popularity</th>
+				<th>Size</th>
+				<th>Pirate</th>
+				<th>Extended</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for title in titles %}
+			{% if title.torrents.count is not sameas(0) %}
+				<tr>
+					<td class="bold larger">{{ title.popularity }} &mdash; {{ title.size }}</td>
+					<td colspan="7" class="bold larger">
+						{{ title.name }}
+						<a href="{{ path('search', { 'id': title.id }) }}"><img src="{{ asset('/img/search.png') }}" /></a>
+					</td>
+				</tr>
+				{% for torrent in title.torrents %}
+					{% if torrent.status is sameas(0) or torrent.status is sameas(1) %}
+						<tr>
+							<td><a href="http://thepiratebay.org/torrent/{{ torrent.id }}" target="_newtab">{{ torrent.id }}</a></td>
+							<td>{{ torrent.category.name }}</td>
+							<td>{{ torrent.uploader.name }} ({{ torrent.uploader.torrents.count }})</td>
+							<td>{{ torrent.popularity }} ({{ torrent.demands.last.seeders }}/{{ torrent.demands.last.leechers }})</td>
+							<td>{{ torrent.size }}</td>
+							
+							<td><a href="{{ path('setpirate', { 'id': torrent.id }) }}">{% if torrent.pirate.name is defined %}{{ torrent.pirate.name }}{% else %}&lt;not set&gt;{% endif %}</a></td>
+							
+							<td>
+								{% if torrent.category.code is sameas(207) or torrent.category.code is sameas(201) %}
+									<a href="{{ path('inspectone', { 'id': torrent.id }) }}">{% if torrent.movie is not null %}
+										{{ torrent.movie.source }}@{{ torrent.movie.quality }} [{{ torrent.movie.releasedAt.format('Y') }}]
+										<br>{% if torrent.movie.uncut is sameas(true) %}[Uncut] {% endif %}
+										{% if torrent.movie.unrated is sameas(true) %}[Unrated] {% endif %}
+										{% if torrent.movie.extended is sameas(true) %}[Extended] {% endif %}
+									{% else %}movie not set{% endif %}</a>
+							
+								{% elseif torrent.category.code is sameas(205) or torrent.category.code is sameas(208) %}
+									<a href="{{ path('setshow', { 'id': torrent.id }) }}">{% if torrent.show is not null %}
+										{{ torrent.show.quality }}
+										<br>{% if torrent.show.series is defined %}{{ torrent.show.series }}{% endif %}
+										S{% if torrent.show.season is defined %}{{ torrent.show.season }}{% endif %}E{% if torrent.show.episode is defined %}{{ torrent.show.episode }}{% endif %}
+									{% else %}show not set{% endif %}</a>
+							
+								{% elseif torrent.category.code is sameas(401) %}
+									<a href="{{ path('setgame', { 'id': torrent.id }) }}">{% if torrent.game is not null %}
+										game stuff
+									{% else %}game not set{% endif %}</a>
+								
+								{% else %}missing{% endif %}
+							</td>
+							
+							<td>
+								<a href="{{ path('action', { 'do': 'torrent', 'id': torrent.id }) }}" title="{{ torrent.titleOriginal }}"><img src="{{ asset('/img/dl.gif') }}" /></a>
+								<a href="{{ path('action', { 'do': 'magnet', 'id': torrent.id }) }}" title="{{ torrent.titleOriginal }}"><img src="{{ asset('/img/magnet.gif') }}" /></a>
+								<a href="{{ path('action', { 'do': 'unwanted', 'id': torrent.id }) }}" title="{{ torrent.titleOriginal }}"><img src="{{ asset('/img/down.png') }}" /></a>
+								<a href="{{ path('action', { 'do': 'bad', 'id': torrent.id }) }}" title="{{ torrent.titleOriginal }}"><img src="{{ asset('/img/broken.png') }}" /></a>
+							</td>
+						</tr>
+					{% endif %}
+				{% endfor %}
+			{% endif %}
+		{% endfor %}
+		</tbody>
+		</table>
+	{% else %}no titles{% endif %}
+
+	<br><h4>Finished</h4>
+	{% if finished is not empty %}
+		{% for title in finished %}
+			{% for torrent in title.torrents %}
+				{% if torrent.status is sameas(5) %}
+					<h5>{{ torrent.title.name }}</h5>
+				{% endif %}
+			{% endfor %}
+		{% endfor %}
+	{% else %}empty{% endif %}
+	
+{% endblock %}
+
