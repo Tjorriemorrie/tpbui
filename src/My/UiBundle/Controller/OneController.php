@@ -6,7 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Response;
+use Doctrine\ORM\EntityManager;
 
+/**
+ * @var $em Doctrine\ORM\EntityManager
+ */
 class OneController extends Controller
 {
     /**
@@ -16,7 +20,7 @@ class OneController extends Controller
     public function indexAction()
     {
     	$em = $this->getDoctrine()->getEntityManager();
-    	
+
     	$size = $em->getRepository('MyUiBundle:Torrent')->getSize();
     	if ($size > 10000) return $this->redirect('/clean');
     	

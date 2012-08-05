@@ -132,4 +132,17 @@ class TorrentRepository extends EntityRepository
 			->getQuery()
 			->getResult();
 	}
+
+
+    /**
+     * find all ordered
+     */
+    public function findAllOrdered()
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder();
+        return $qb->select('t')->from('MyUiBundle:Torrent', 't')
+            ->orderBy('t.popularity', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 }

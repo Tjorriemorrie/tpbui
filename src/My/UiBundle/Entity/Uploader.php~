@@ -47,10 +47,43 @@ class Uploader
 	}
 	
 	/** Get Stats */
-	public function getStats()
+	public function getStatsUploaded($categoryId)
 	{
-		//return \My\
+		if (!$this->getTorrents()->count()) return null;
+		
+		$avg = array();
+		foreach ($this->getTorrents() as $torrent) {
+			if ($torrent->getCategory()->getId() != $categoryId) continue;
+			$avg[] = $torrent->getPopularity();
+		}
+		
+		if (!count($avg)) return null;
+		return (array_sum($avg) / count($avg));
 	}
+	
+	/** Get Stats Compared */
+	public function getStatsUploadedCompared($avgStats, $categoryId)
+	{
+		$uploadedStats = $this->getStatsUploaded($categoryId);
+		if (empty($avgStats) || is_null($uploadedStats)) return '-';
+		return round($uploadedStats / $avgStats * 100) . '%'; 
+	}
+	
+	public function getStatsDownloaded($categoryId)
+	{
+		if (!$this->getTorrents()->count()) return null;
+		
+		$countAll = $countDownloaded = 0;
+		foreach ($this->getTorrents() as $torrent) {
+			if ($torrent->getCategory()->getId() != $categoryId) continue;
+			$countAll++;
+			if (in_array($torrent->getStatus(), array(3, 5))) $countDownloaded++;
+		}
+		
+		if ($countAll == 0) return '-';
+		return round($countDownloaded / $countAll * 100) . '%';
+	}
+	
 
 	////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////

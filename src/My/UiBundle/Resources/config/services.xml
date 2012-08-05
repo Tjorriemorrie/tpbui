@@ -8,13 +8,18 @@
     <parameters>
         <parameter key="my_ui.example.class">My\UiBundle\Example</parameter>
     </parameters>
+    -->
 
     <services>
-        <service id="my_ui.example" class="%my_ui.example.class%">
-            <argument type="service" id="service_id" />
-            <argument>plain_value</argument>
-            <argument>%parameter_name%</argument>
-        </service>
-    </services>
-    -->
+
+    <service id="manager.torrent" class="My\UiBundle\Manager\TorrentManager">
+        <argument type="service" id="doctrine.orm.entity_manager" />
+    </service>
+
+    <service id="manager.scrape" class="My\UiBundle\Manager\ScrapeManager">
+        <argument type="service" id="manager.torrent" />
+        <argument type="service" id="session" />
+    </service>
+
+</services>
 </container>

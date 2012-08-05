@@ -7,8 +7,7 @@ class AppKernel extends Kernel
 {
 	public function init()
 	{
-		defined('DIR_SEARCH')
-			|| define('DIR_SEARCH', realpath(dirname(__FILE__)) . '/../search');
+		date_default_timezone_set('Africa/Johannesburg');
 	}
 	
 	

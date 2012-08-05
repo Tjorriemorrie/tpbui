@@ -5,103 +5,87 @@ namespace My\UiBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="My\UiBundle\Repository\TorrentRepository")
- * @ORM\Table(name="torrents")
- * @ORM\HasLifecycleCallbacks
+ * @ORM\Entity(repositoryClass="My\UiBundle\Repository\ItemRepository")
+ * @ORM\Table(name="items")
  */
-class Torrent
+class Item
 {
-	const STATUS_BAD		= -2;
-	const STATUS_UNWANTED	= -1;
-	const STATUS_NORMAL		= 0;
-	const STATUS_CANCELLED	= 1;
-	const STATUS_DOWNLOAD	= 3;
-	const STATUS_FINISHED	= 5;
-
-
 	/**
 	 * @ORM\Id @ORM\GeneratedValue(strategy="NONE")
 	 * @ORM\Column(type="bigint")
 	 */
 	private $id;
 
-	/** @ORM\ManyToOne(targetEntity="Category", inversedBy="torrents") */
-	private $category;
-
-	/** @ORM\Column(type="string", length=10) */
-	private $size;
-
-	/** @ORM\ManyToOne(targetEntity="Title", inversedBy="torrents") */
-	private $title;
-
-	/** @ORM\Column(type="text") */
-	private $titleOriginal;
-
-	/** @ORM\ManyToOne(targetEntity="Uploader", inversedBy="torrents") */
-	private $uploader;
-
-	/** @ORM\OneToMany(targetEntity="Demand", mappedBy="torrent", cascade={"remove"}) */
-	private $demands;
-
-	/** @ORM\Column(type="string", length=100) */
-	private $linkTorrent;
-
-	/** @ORM\Column(type="string", length=100) */
-	private $linkMagnet;
+	/**
+	 * @ORM\Column(type="smallint")
+	 */
+	private $status;
+	const STATUS_BAD		= -2;
+	const STATUS_UNWANTED	= -1;
+	const STATUS_NEW		= 0;
+	const STATUS_DOWNLOAD	= 1;
 
 	/**
+     * @ORM\Column(type="smallint")
+     */
+	private $category;
+	const CATEGORY_SERIES_HD = 208;
+	const CATEGORY_MOVIES_HD = 207;
+	const CATEGORY_GAMES_PC = 401;
+
+	/**
+	 * @ORM\Column(type="smallint")
+	 */
+	private $page;
+
+    /**
+     * @ORM\Column(type="string", length=500)
+     */
+    private $title;
+
+    /**
+    * @ORM\Column(type="bigint")
+    */
+    private $size;
+
+	/**
+	 * @ORM\Column(type="string", length=255)
+	 */
+	private $uploader;
+
+	/**
+	 * @ORM\Column(type="text")
+	 */
+    private $linkMagnet;
+
+    /**
      * @ORM\Column(type="integer")
      */
 	private $popularity;
 
-	/** @ORM\Column(type="smallint") */
-	private $status;
 
-
-	/** @ORM\Column(type="boolean") */
-	private $inspected;
-
-	/** @ORM\ManyToOne(targetEntity="Pirate", inversedBy="torrents") */
-	private $pirate;
-
-
-	/** @ORM\OneToOne(targetEntity="Movie", inversedBy="torrent") */
-	private $movie;
-
-	/** @ORM\OneToOne(targetEntity="Show", inversedBy="torrent") */
-	private $show;
-
-	/** @ORM\OneToOne(targetEntity="Game", inversedBy="torrent") */
-	private $game;
-
-
-	/** @ORM\Column(type="datetime") */
+	/**
+	 * @ORM\Column(type="datetime")
+	 */
 	private $createdAt;
 
-	/** @ORM\Column(type="datetime", nullable=true) */
-	private $modifiedAt;
+	/**
+	 * @ORM\Column(type="datetime", nullable=true)
+	 */
+	private $updatedAt;
 
 	////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////
 
-	/** Construct */
+	/**
+	 * Construct
+	 */
 	public function __construct()
 	{
 		$this->createdAt = new \DateTime();
-		$this->inspected = false;
-		$this->demands = new \Doctrine\Common\Collections\ArrayCollection();
-		$this->status = self::STATUS_NORMAL;
+		$this->status = self::STATUS_NEW;
 	}
 
-	/** @ORM\PreUpdate */
-	public function preUpdate()
-	{
-		$this->setModifiedAt(new \DateTime());
-		$last = $this->getDemands()->last();
-		$total = $last->getSeeders() + $last->getLeechers();
-		$ratio = $total * $last->getSeeders() / ($last->getLeechers() > 0 ? $last->getLeechers() : 1);
-		$this->setPopularity($total + $ratio);
-	}
 
 	public function splitName()
 	{
@@ -222,7 +206,7 @@ class Torrent
     /**
      * Get id
      *
-     * @return bigint
+     * @return bigint 
      */
     public function getId()
     {
@@ -230,9 +214,89 @@ class Torrent
     }
 
     /**
+     * Set status
+     *
+     * @param smallint $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
+    /**
+     * Get status
+     *
+     * @return smallint 
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set category
+     *
+     * @param smallint $category
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+    }
+
+    /**
+     * Get category
+     *
+     * @return smallint 
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set page
+     *
+     * @param smallint $page
+     */
+    public function setPage($page)
+    {
+        $this->page = $page;
+    }
+
+    /**
+     * Get page
+     *
+     * @return smallint 
+     */
+    public function getPage()
+    {
+        return $this->page;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
      * Set size
      *
-     * @param string $size
+     * @param bigint $size
      */
     public function setSize($size)
     {
@@ -242,7 +306,7 @@ class Torrent
     /**
      * Get size
      *
-     * @return string
+     * @return bigint 
      */
     public function getSize()
     {
@@ -250,49 +314,29 @@ class Torrent
     }
 
     /**
-     * Set titleOriginal
+     * Set uploader
      *
-     * @param string $titleOriginal
+     * @param string $uploader
      */
-    public function setTitleOriginal($titleOriginal)
+    public function setUploader($uploader)
     {
-        $this->titleOriginal = $titleOriginal;
+        $this->uploader = $uploader;
     }
 
     /**
-     * Get titleOriginal
+     * Get uploader
      *
-     * @return string
+     * @return string 
      */
-    public function getTitleOriginal()
+    public function getUploader()
     {
-        return $this->titleOriginal;
-    }
-
-    /**
-     * Set linkTorrent
-     *
-     * @param string $linkTorrent
-     */
-    public function setLinkTorrent($linkTorrent)
-    {
-        $this->linkTorrent = $linkTorrent;
-    }
-
-    /**
-     * Get linkTorrent
-     *
-     * @return string
-     */
-    public function getLinkTorrent()
-    {
-        return $this->linkTorrent;
+        return $this->uploader;
     }
 
     /**
      * Set linkMagnet
      *
-     * @param string $linkMagnet
+     * @param text $linkMagnet
      */
     public function setLinkMagnet($linkMagnet)
     {
@@ -302,7 +346,7 @@ class Torrent
     /**
      * Get linkMagnet
      *
-     * @return string
+     * @return text 
      */
     public function getLinkMagnet()
     {
@@ -322,51 +366,11 @@ class Torrent
     /**
      * Get popularity
      *
-     * @return integer
+     * @return integer 
      */
     public function getPopularity()
     {
         return $this->popularity;
-    }
-
-    /**
-     * Set status
-     *
-     * @param smallint $status
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-    }
-
-    /**
-     * Get status
-     *
-     * @return smallint
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-    /**
-     * Set inspected
-     *
-     * @param boolean $inspected
-     */
-    public function setInspected($inspected)
-    {
-        $this->inspected = $inspected;
-    }
-
-    /**
-     * Get inspected
-     *
-     * @return boolean
-     */
-    public function getInspected()
-    {
-        return $this->inspected;
     }
 
     /**
@@ -382,7 +386,7 @@ class Torrent
     /**
      * Get createdAt
      *
-     * @return datetime
+     * @return datetime 
      */
     public function getCreatedAt()
     {
@@ -390,192 +394,22 @@ class Torrent
     }
 
     /**
-     * Set modifiedAt
+     * Set updatedAt
      *
-     * @param datetime $modifiedAt
+     * @param datetime $updatedAt
      */
-    public function setModifiedAt($modifiedAt)
+    public function setUpdatedAt($updatedAt)
     {
-        $this->modifiedAt = $modifiedAt;
+        $this->updatedAt = $updatedAt;
     }
 
     /**
-     * Get modifiedAt
+     * Get updatedAt
      *
-     * @return datetime
+     * @return datetime 
      */
-    public function getModifiedAt()
+    public function getUpdatedAt()
     {
-        return $this->modifiedAt;
-    }
-
-    /**
-     * Set category
-     *
-     * @param My\UiBundle\Entity\Category $category
-     */
-    public function setCategory(\My\UiBundle\Entity\Category $category)
-    {
-        $this->category = $category;
-    }
-
-    /**
-     * Get category
-     *
-     * @return My\UiBundle\Entity\Category
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
-     * Set title
-     *
-     * @param My\UiBundle\Entity\Title $title
-     */
-    public function setTitle(\My\UiBundle\Entity\Title $title)
-    {
-        $this->title = $title;
-    }
-
-    /**
-     * Get title
-     *
-     * @return My\UiBundle\Entity\Title
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * Set uploader
-     *
-     * @param My\UiBundle\Entity\Uploader $uploader
-     */
-    public function setUploader(\My\UiBundle\Entity\Uploader $uploader)
-    {
-        $this->uploader = $uploader;
-    }
-
-    /**
-     * Get uploader
-     *
-     * @return My\UiBundle\Entity\Uploader
-     */
-    public function getUploader()
-    {
-        return $this->uploader;
-    }
-
-    /**
-     * Add demands
-     *
-     * @param My\UiBundle\Entity\Demand $demands
-     */
-    public function addDemands(\My\UiBundle\Entity\Demand $demands)
-    {
-        $this->demands[] = $demands;
-    }
-
-    /**
-     * Get demands
-     *
-     * @return Doctrine\Common\Collections\Collection
-     */
-    public function getDemands()
-    {
-        return $this->demands;
-    }
-
-    /**
-     * Set pirate
-     *
-     * @param My\UiBundle\Entity\Pirate $pirate
-     */
-    public function setPirate(\My\UiBundle\Entity\Pirate $pirate)
-    {
-        $this->pirate = $pirate;
-    }
-
-    /**
-     * Get pirate
-     *
-     * @return My\UiBundle\Entity\Pirate
-     */
-    public function getPirate()
-    {
-        return $this->pirate;
-    }
-
-    /**
-     * Set movie
-     *
-     * @param My\UiBundle\Entity\Movie $movie
-     */
-    public function setMovie(\My\UiBundle\Entity\Movie $movie)
-    {
-        $this->movie = $movie;
-    }
-
-    /**
-     * Get movie
-     *
-     * @return My\UiBundle\Entity\Movie
-     */
-    public function getMovie()
-    {
-        return $this->movie;
-    }
-
-    /**
-     * Set show
-     *
-     * @param My\UiBundle\Entity\Show $show
-     */
-    public function setShow(\My\UiBundle\Entity\Show $show)
-    {
-        $this->show = $show;
-    }
-
-    /**
-     * Get show
-     *
-     * @return My\UiBundle\Entity\Show
-     */
-    public function getShow()
-    {
-        return $this->show;
-    }
-
-    /**
-     * Set game
-     *
-     * @param My\UiBundle\Entity\Game $game
-     */
-    public function setGame(\My\UiBundle\Entity\Game $game)
-    {
-        $this->game = $game;
-    }
-
-    /**
-     * Get game
-     *
-     * @return My\UiBundle\Entity\Game
-     */
-    public function getGame()
-    {
-        return $this->game;
-    }
-
-    /**
-     * Add demands
-     *
-     * @param My\UiBundle\Entity\Demand $demands
-     */
-    public function addDemand(\My\UiBundle\Entity\Demand $demands)
-    {
-        $this->demands[] = $demands;
+        return $this->updatedAt;
     }
 }

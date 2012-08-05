@@ -49,7 +49,9 @@ class Torrent
 	/** @ORM\Column(type="string", length=100) */
 	private $linkMagnet;
 
-	/** @ORM\Column(type="integer") */
+	/**
+     * @ORM\Column(type="integer")
+     */
 	private $popularity;
 
 	/** @ORM\Column(type="smallint") */

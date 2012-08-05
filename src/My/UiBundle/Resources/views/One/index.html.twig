@@ -9,9 +9,9 @@
 
 {% block content %}
 	{{ parent() }}
-	
+
 	<h6 id="status">&nbsp;</h6>
-	
+
 	<div class="box boxFull cf">
 		<h3 class="title">New Torrents</h3>
 		{% for key, category in categories %}
@@ -24,7 +24,7 @@
 			</div>
 		{% endfor %}
 	</div>
-	
+
 
 	<div id="busy" class="box boxThird cf">
 		<h3 class="title">Busy Downloading Torrents</h3>
@@ -32,19 +32,19 @@
 		</ul>
 	</div>
 
-	
+
 	<div id="done" class="box boxThird cf">
 		<h3 class="title">Recently Finished Torrents</h3>
 		<ul>
 		</ul>
 	</div>
-	
+
 
 	<div id="bad" class="box boxThird cf">
 		<h3 class="title">Unwanted Torrents</h3>
 		<ul>
 		</ul>
 	</div>
-	
+
 {% endblock %}
 

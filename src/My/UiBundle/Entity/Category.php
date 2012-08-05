@@ -21,6 +21,7 @@ class Category
 
 	/** @ORM\Column(type="smallint") */
 	private $code;
+    const CODE_HD_SERIES = 208;
 
 	/** @ORM\Column(type="string", length=20) */
 	private $media;
