@@ -26,9 +26,6 @@ class DefaultController extends Controller
     {
         $torrentMan = $this->get('manager.torrent');
 
-	    $scrapeMan = $this->get('manager.scrape');
-	    $scrapeMan->run();
-
 	    $series = $torrentMan->findByCategory(Item::CATEGORY_SERIES_HD);
 //	    die(var_dump($series));
 
@@ -48,7 +45,11 @@ class DefaultController extends Controller
 	public function scrapeAction()
 	{
 		$scrapeMan = $this->get('manager.scrape');
+
 		$content = $scrapeMan->run();
+		if (!is_null($content)) {
+			$html = $this->torrentMan->findByCategory($content['category']);
+		}
 
 		$response = new Response(json_encode($content));
 		$response->headers->set('Content-Type', 'application/json');

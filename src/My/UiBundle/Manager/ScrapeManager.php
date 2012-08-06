@@ -23,15 +23,17 @@ class ScrapeManager
 
 	public function run()
 	{
-		$this->setup();
+		$result = $this->setup();
+		if (!$result) {
+			return;
+		}
 
 		$infos = $this->scrape();
 //		die(var_dump($infos));
 
 		$this->torrentMan->store($infos, $this->category, $this->page);
 
-		$content = $this->torrentMan->findByCategory($this->category);
-		return array($this->tab => $content);
+		return array('tab' => $this->tab, 'category' => $this->category);
 	}
 
 

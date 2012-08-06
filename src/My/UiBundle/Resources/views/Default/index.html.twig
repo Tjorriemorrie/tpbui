@@ -25,63 +25,15 @@
 		<div class="tab-content">
 
 			<div id="series" class="tab-pane fade">
-				{% for serie in series %}
-					<dl>
-						<dt>
-							<a href="http://thepiratebay.se/torrent/{{ serie.id }}" target="_new"><img src="{{ asset('tpb.gif') }}" width="14"></a>
-							<a href="{{ serie.linkMagnet }}"><img src="{{ asset('magnet.gif') }}" width="14"></a>
-							{{ serie.title }}
-						</dt>
-						<dd>
-							{{ serie.category }}:{{ serie.page }}
-							{{ serie.popularity }}
-							{{ serie.size }}
-							{{ serie.uploader }}
-						</dd>
-					</dl>
-				{% else %}
-					<h4>No series</h4>
-				{% endfor %}
+				{% include 'MyUiBundle:Default:items.html.twig' with {'items': series} %}
 			</div>
-			
+
 			<div id="movies" class="tab-pane fade">
-				{% for movie in movies %}
-					<dl>
-						<dt>
-							<a href="http://thepiratebay.se/torrent/{{ movie.id }}" target="_new"><img src="{{ asset('tpb.gif') }}" width="14"></a>
-							<a href="{{ movie.linkMagnet }}"><img src="{{ asset('magnet.gif') }}" width="14"></a>
-							{{ movie.title }}
-						</dt>
-						<dd>
-							{{ movie.category }}:{{ movie.page }}
-							{{ movie.popularity }}
-							{{ movie.size }}
-							{{ movie.uploader }}
-						</dd>
-					</dl>
-				{% else %}
-					<h4>No movies</h4>
-				{% endfor %}
+				{% include 'MyUiBundle:Default:items.html.twig' with {'items': movies} %}
 			</div>
-			
+
 			<div id="games" class="tab-pane fade">
-				{% for game in games %}
-					<dl>
-						<dt>
-							<a href="http://thepiratebay.se/torrent/{{ game.id }}" target="_new"><img src="{{ asset('tpb.gif') }}" width="14"></a>
-							<a href="{{ game.linkMagnet }}"><img src="{{ asset('magnet.gif') }}" width="14"></a>
-							{{ game.title }}
-						</dt>
-						<dd>
-							{{ game.category }}:{{ game.page }}
-							{{ game.popularity }}
-							{{ game.size }}
-							{{ game.uploader }}
-						</dd>
-					</dl>
-				{% else %}
-					<h4>No games</h4>
-				{% endfor %}
+				{% include 'MyUiBundle:Default:items.html.twig' with {'items': games} %}
 			</div>
 
 		</div>

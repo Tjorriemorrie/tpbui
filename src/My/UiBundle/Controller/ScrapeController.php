@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 class ScrapeController extends Controller
 {
     /**
-     * @Route("/scrape", name="scrape")
+     * @Route("/scrapes", name="scrapes")
      * @Template()
      */
     public function indexAction()
