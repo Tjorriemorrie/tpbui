@@ -32,6 +32,9 @@ class Item
 	const CATEGORY_SERIES_HD = 208;
 	const CATEGORY_MOVIES_HD = 207;
 	const CATEGORY_GAMES_PC = 401;
+	const CATEGORY_APPS_WIN = 301;
+	const CATEGORY_MUSIC = 101;
+	const CATEGORY_AUDIOBOOKS = 102;
 
 	/**
 	 * @ORM\Column(type="smallint")
@@ -84,6 +87,33 @@ class Item
 	{
 		$this->createdAt = new \DateTime();
 		$this->status = self::STATUS_NEW;
+	}
+
+
+	/**
+	 * Is New
+	 */
+	public function isNew()
+	{
+		return ($this->getStatus() === self::STATUS_NEW ? true : false);
+	}
+
+
+	/**
+	 * Is Downloaded
+	 */
+	public function isDownloaded()
+	{
+		return ($this->getStatus() === self::STATUS_DOWNLOAD ? true : false);
+	}
+
+
+	/**
+	 * Is Unwanted
+	 */
+	public function isUnwanted()
+	{
+		return ($this->getStatus() <= self::STATUS_UNWANTED ? true : false);
 	}
 
 

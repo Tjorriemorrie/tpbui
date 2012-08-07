@@ -28,6 +28,7 @@ class TorrentManager
 		$this->repo->incrementPage($category, $page);
 
 		foreach ($infos as $info) {
+//			die(var_dump($info));
 			$item = $this->find($info['id']);
 			if ($item) {
 				$item->setPage($page);
@@ -52,7 +53,7 @@ class TorrentManager
 		$item->setCategory($category);
 		$item->setPage($page);
 		$item->setTitle($info['title']);
-		$item->setSize($info['size']);
+		$item->setSize(round($info['size']));
 		$item->setUploader($info['uploader']);
 		$item->setLinkMagnet($info['linkMagnet']);
 		$item->setPopularity($info['popularity']);
@@ -61,12 +62,39 @@ class TorrentManager
 	}
 
 
-	public function update($info)
+	/**
+	 * Set status
+	 */
+	public function setStatus($id, $status)
 	{
-		die('todo');
+		$item = $this->find($id);
+		$item->setStatus($status);
+		$this->em->flush();
+
+		$content['category'] = $item->getCategory();
+		if ($item->getCategory() === ITEM::CATEGORY_SERIES_HD) {
+			$content['tab'] = 'series';
+		} elseif ($item->getCategory() === ITEM::CATEGORY_MOVIES_HD) {
+			$content['tab'] = 'movies';
+		} elseif ($item->getCategory() === ITEM::CATEGORY_GAMES_PC) {
+			$content['tab'] = 'games';
+		} elseif ($item->getCategory() === ITEM::CATEGORY_APPS_WIN) {
+			$content['tab'] = 'windows';
+		} elseif ($item->getCategory() === ITEM::CATEGORY_MUSIC) {
+			$content['tab'] = 'music';
+		} elseif ($item->getCategory() === ITEM::CATEGORY_AUDIOBOOKS) {
+			$content['tab'] = 'audiobooks';
+		} else {
+			throw new \Exception('unknown category');
+		}
+
+		return $content;
 	}
 
 
+
+	////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////
 
 	/**
      * Find By
@@ -79,6 +107,11 @@ class TorrentManager
 	public function findUpdateLast($category, $page)
 	{
 		return $this->repo->findUpdateLast($category, $page);
+	}
+
+	public function findCategoryPagePopularity($category, $page)
+	{
+		return $this->repo->findCategoryPagePopularity($category, $page);
 	}
 
 	public function find($itemId)

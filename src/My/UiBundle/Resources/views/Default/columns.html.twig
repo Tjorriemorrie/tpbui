@@ -1,0 +1,19 @@
+<div class="row-fluid">
+	<div class="span4">
+		{% for item in items if item.isNew %}
+			{% include 'MyUiBundle:Default:item.html.twig' with {'item': item} %}
+		{% endfor %}
+	</div>
+
+	<div class="span4">
+		{% for item in items if item.isDownloaded %}
+			{% include 'MyUiBundle:Default:item.html.twig' with {'item': item} %}
+		{% endfor %}
+	</div>
+
+	<div class="span4">
+		{% for item in items if item.isUnwanted %}
+			{% include 'MyUiBundle:Default:item.html.twig' with {'item': item} %}
+		{% endfor %}
+	</div>
+</div>

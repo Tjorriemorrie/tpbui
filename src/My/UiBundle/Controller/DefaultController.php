@@ -27,16 +27,38 @@ class DefaultController extends Controller
         $torrentMan = $this->get('manager.torrent');
 
 	    $series = $torrentMan->findByCategory(Item::CATEGORY_SERIES_HD);
-//	    die(var_dump($series));
-
 	    $movies = $torrentMan->findByCategory(Item::CATEGORY_MOVIES_HD);
-//	    die(var_dump($movies));
-
 	    $games = $torrentMan->findByCategory(Item::CATEGORY_GAMES_PC);
-//	    die(var_dump($movies));
+	    $windows = $torrentMan->findByCategory(Item::CATEGORY_APPS_WIN);
+	    $music = $torrentMan->findByCategory(Item::CATEGORY_MUSIC);
+	    $audiobooks = $torrentMan->findByCategory(Item::CATEGORY_AUDIOBOOKS);
 
-	    return array('series' => $series, 'movies' => $movies, 'games' => $games);
+	    return array('series' => $series, 'movies' => $movies, 'games' => $games, 'windows' => $windows, 'music' => $music, 'audiobooks' => $audiobooks);
     }
+
+
+	/**
+	 * @Route("/downloaded", name="downloaded")
+	 */
+	public function downloadedAction()
+	{
+		$id = $this->getRequest()->query->get('id');
+		$torrentMan = $this->get('manager.torrent');
+
+		$response = new Response();
+		$response->headers->set('Content-Type', 'application/json');
+		try {
+			$content = $torrentMan->setStatus($id, Item::STATUS_DOWNLOAD);
+			$items = $torrentMan->findByCategory($content['category']);
+			$content['html'] = $this->renderView('MyUiBundle:Default:columns.html.twig', array('items' => $items));
+		} catch (\Exception $e) {
+			$content = $e->getMessage();
+			$response->setStatusCode(400);
+		}
+
+		$response->setContent(json_encode($content));
+		return $response;
+	}
 
 
 	/**
@@ -45,14 +67,20 @@ class DefaultController extends Controller
 	public function scrapeAction()
 	{
 		$scrapeMan = $this->get('manager.scrape');
+		$torrentMan = $this->get('manager.torrent');
 
-		$content = $scrapeMan->run();
-		if (!is_null($content)) {
-			$html = $this->torrentMan->findByCategory($content['category']);
+		$response = new Response();
+		$response->headers->set('Content-Type', 'application/json');
+		try {
+			$content = $scrapeMan->run();
+			$items = $torrentMan->findByCategory($content['category']);
+			$content['html'] = $this->renderView('MyUiBundle:Default:columns.html.twig', array('items' => $items));
+		} catch (\Exception $e) {
+			$content = $e->getMessage();
+			$response->setStatusCode(400);
 		}
 
-		$response = new Response(json_encode($content));
-		$response->headers->set('Content-Type', 'application/json');
+		$response->setContent(json_encode($content));
 		return $response;
 	}
 }
