@@ -21,8 +21,8 @@ class ItemRepository extends EntityRepository
 		return $qb->select('i')
 			->from('MyUiBundle:Item', 'i')
 			->where('i.category = ?2')->setParameter(2, $category)
-			->orderBy('i.page', 'ASC')
-			->addOrderBy('i.popularity', 'DESC')
+			->orderBy('i.createdAt', 'ASC')
+			->addOrderBy('i.title', 'ASC')
 			->getQuery()
 			->getResult();
 	}
@@ -55,6 +55,23 @@ class ItemRepository extends EntityRepository
 				->andWhere('i.category = ?3')->setParameter(3, $category)
 				->orderBy('i.updatedAt', 'ASC')
 				->addOrderBy('i.createdAt', 'ASC')
+				->getQuery()
+				->getSingleScalarResult();
+		} catch (\Exception $e) {}
+	}
+
+
+	/**
+	 * Find Category's page's average popularity
+	 */
+	public function findCategoryPagePopularity($category, $page)
+	{
+		$qb = $this->getEntityManager()->createQueryBuilder();
+		try {
+			return $qb->select($qb->expr()->avg('i.popularity'))
+				->from('MyUiBundle:Item', 'i')
+				->where('i.page = ?2')->setParameter(2, $page)
+				->andWhere('i.category = ?3')->setParameter(3, $category)
 				->getQuery()
 				->getSingleScalarResult();
 		} catch (\Exception $e) {}

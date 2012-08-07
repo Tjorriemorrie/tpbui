@@ -7,6 +7,7 @@
 {% block javascripts %}
 	{{ parent() }}
 	<script type="text/javascript" src="{{ asset('bundles/myui/scrape.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('bundles/myui/item.js') }}"></script>
 {% endblock %}
 
 
@@ -14,26 +15,46 @@
 <div class="container-fluid">
 	<div class="row-fluid">
 
-		<h2>The Pirate Bay</h2>
+		<h2></h2>
 
 		<ul class="nav nav-tabs">
 			<li><a data-toggle="tab" href="#series">Series</a></li>
 			<li><a data-toggle="tab" href="#movies">Movies</a></li>
 			<li><a data-toggle="tab" href="#games">Games</a></li>
+			<li><a data-toggle="tab" href="#windows">Windows</a></li>
+			<li><a data-toggle="tab" href="#music">Music</a></li>
+			<li><a data-toggle="tab" href="#audiobooks">Audiobooks</a></li>
+			<li><a data-toggle="tab" href="#log">Log</a></li>
 		</ul>
 
 		<div class="tab-content">
 
 			<div id="series" class="tab-pane fade">
-				{% include 'MyUiBundle:Default:items.html.twig' with {'items': series} %}
+				{% include 'MyUiBundle:Default:columns.html.twig' with {'items': series} %}
 			</div>
 
 			<div id="movies" class="tab-pane fade">
-				{% include 'MyUiBundle:Default:items.html.twig' with {'items': movies} %}
+				{% include 'MyUiBundle:Default:columns.html.twig' with {'items': movies} %}
 			</div>
 
 			<div id="games" class="tab-pane fade">
-				{% include 'MyUiBundle:Default:items.html.twig' with {'items': games} %}
+				{% include 'MyUiBundle:Default:columns.html.twig' with {'items': games} %}
+			</div>
+
+			<div id="windows" class="tab-pane fade">
+				{% include 'MyUiBundle:Default:columns.html.twig' with {'items': windows} %}
+			</div>
+
+			<div id="music" class="tab-pane fade">
+				{% include 'MyUiBundle:Default:columns.html.twig' with {'items': music} %}
+			</div>
+
+			<div id="audiobooks" class="tab-pane fade">
+				{% include 'MyUiBundle:Default:columns.html.twig' with {'items': audiobooks} %}
+			</div>
+
+			<div id="log" class="tab-pane fade">
+
 			</div>
 
 		</div>
