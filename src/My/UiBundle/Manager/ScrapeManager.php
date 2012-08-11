@@ -42,10 +42,11 @@ class ScrapeManager
 			ITEM::CATEGORY_APPS_WIN,
 			ITEM::CATEGORY_MUSIC,
 			ITEM::CATEGORY_AUDIOBOOKS,
+			ITEM::CATEGORY_OTHER,
 		);
 
 		$notfound = true;
-		for ($p=0; $p<6; $p++) {
+		for ($p=0; $p<7; $p++) {
 			$list = array();
 			foreach ($categories as $category) {
 				$list[$category] = $this->torrentMan->findCategoryPagePopularity($category, $p);
@@ -78,6 +79,8 @@ class ScrapeManager
 			$this->tab = 'music';
 		} elseif ($category === ITEM::CATEGORY_AUDIOBOOKS) {
 			$this->tab = 'audiobooks';
+		} elseif ($category === ITEM::CATEGORY_OTHER) {
+			$this->tab = 'other';
 		} else {
 			throw new \Exception('unknown category');
 		}
@@ -100,7 +103,7 @@ class ScrapeManager
 //		die(var_dump($rows));
 
 		$infos = array();
-		foreach ($rows as $row) {
+		foreach ($rows as $key => $row) {
 //			die(var_dump($row));
 			$columns = explode('<td', $row);
 			//die(print_r($columns));
@@ -112,15 +115,12 @@ class ScrapeManager
 			// title
 			$title = substr($columns[2], strpos($columns[2], 'title="Details for ') + 19);
 			$title = trim(substr($title, 0, strpos($title, '"')));
+			$title = str_replace(array('☆', '★'), '', $title);
 
 			// size
 			$size = substr($columns[2], strpos($columns[2], ', Size ') + 7);
 			$size = substr($size, 0, strpos($size, ','));
-			if (substr($size, -3) == 'MiB') {
-				$size = (float)$size * 1000000;
-			} elseif (substr($size, -3) == 'GiB') {
-				$size = (float)$size * 1000000000;
-			}
+			$size = str_replace('&nbsp;', ' ', $size);
 
 			// uploader
 			$uploader = substr($columns[2], strpos($columns[2], 'href="/user/') + 12);
@@ -148,6 +148,7 @@ class ScrapeManager
 			$infos[] = $info;
 		}
 
+//		die(var_dump($infos));
 		return $infos;
 	}
 }

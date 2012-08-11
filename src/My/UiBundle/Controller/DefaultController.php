@@ -32,8 +32,9 @@ class DefaultController extends Controller
 	    $windows = $torrentMan->findByCategory(Item::CATEGORY_APPS_WIN);
 	    $music = $torrentMan->findByCategory(Item::CATEGORY_MUSIC);
 	    $audiobooks = $torrentMan->findByCategory(Item::CATEGORY_AUDIOBOOKS);
+	    $other = $torrentMan->findByCategory(Item::CATEGORY_OTHER);
 
-	    return array('series' => $series, 'movies' => $movies, 'games' => $games, 'windows' => $windows, 'music' => $music, 'audiobooks' => $audiobooks);
+	    return array('series' => $series, 'movies' => $movies, 'games' => $games, 'windows' => $windows, 'music' => $music, 'audiobooks' => $audiobooks, 'other' => $other);
     }
 
 
@@ -49,6 +50,30 @@ class DefaultController extends Controller
 		$response->headers->set('Content-Type', 'application/json');
 		try {
 			$content = $torrentMan->setStatus($id, Item::STATUS_DOWNLOAD);
+			$items = $torrentMan->findByCategory($content['category']);
+			$content['html'] = $this->renderView('MyUiBundle:Default:columns.html.twig', array('items' => $items));
+		} catch (\Exception $e) {
+			$content = $e->getMessage();
+			$response->setStatusCode(400);
+		}
+
+		$response->setContent(json_encode($content));
+		return $response;
+	}
+
+
+	/**
+	 * @Route("/unwanted", name="unwanted")
+	 */
+	public function unwantedAction()
+	{
+		$id = $this->getRequest()->query->get('id');
+		$torrentMan = $this->get('manager.torrent');
+
+		$response = new Response();
+		$response->headers->set('Content-Type', 'application/json');
+		try {
+			$content = $torrentMan->setStatus($id, Item::STATUS_UNWANTED);
 			$items = $torrentMan->findByCategory($content['category']);
 			$content['html'] = $this->renderView('MyUiBundle:Default:columns.html.twig', array('items' => $items));
 		} catch (\Exception $e) {

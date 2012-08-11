@@ -53,7 +53,7 @@ class TorrentManager
 		$item->setCategory($category);
 		$item->setPage($page);
 		$item->setTitle($info['title']);
-		$item->setSize(round($info['size']));
+		$item->setSize($info['size']);
 		$item->setUploader($info['uploader']);
 		$item->setLinkMagnet($info['linkMagnet']);
 		$item->setPopularity($info['popularity']);
@@ -84,6 +84,8 @@ class TorrentManager
 			$content['tab'] = 'music';
 		} elseif ($item->getCategory() === ITEM::CATEGORY_AUDIOBOOKS) {
 			$content['tab'] = 'audiobooks';
+		} elseif ($item->getCategory() === ITEM::CATEGORY_OTHER) {
+			$content['tab'] = 'other';
 		} else {
 			throw new \Exception('unknown category');
 		}

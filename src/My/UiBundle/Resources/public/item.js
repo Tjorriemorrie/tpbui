@@ -1,5 +1,5 @@
 $(function() {
-    $('.remove').on('click', function() {
+    $(document).on('click', '.remove', function() {
         $('#log').prepend('<p>unwanted: ' + $(this).parents('dt').text() + '</p>');
         $.getJSON('/unwanted', {id: $(this).parents('dl').attr('id')}, function(response) {
             $('#' + response.tab).html(response.html);
@@ -9,7 +9,7 @@ $(function() {
         });
     });
 
-    $('.download').on('click', function() {
+    $(document).on('click', '.download', function() {
         $('#log').prepend('<p>downloaded: ' + $(this).parents('dt').text() + '</p>');
         var magnet = $(this).attr('href');
         $.getJSON('/downloaded', {id: $(this).parents('dl').attr('id')}, function(response) {
