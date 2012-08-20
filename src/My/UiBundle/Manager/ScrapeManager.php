@@ -46,7 +46,7 @@ class ScrapeManager
 		);
 
 		$notfound = true;
-		for ($p=0; $p<7; $p++) {
+		for ($p=0; $p<10; $p++) {
 			$list = array();
 			foreach ($categories as $category) {
 				$list[$category] = $this->torrentMan->findCategoryPagePopularity($category, $p);
@@ -115,7 +115,8 @@ class ScrapeManager
 			// title
 			$title = substr($columns[2], strpos($columns[2], 'title="Details for ') + 19);
 			$title = trim(substr($title, 0, strpos($title, '"')));
-			$title = str_replace(array('☆', '★'), '', $title);
+			//$title = str_replace(array('☆', '★'), '', $title);
+			$title = preg_replace('/[^. _a-zA-z0-9\[\]()\-]/', '', $title);
 
 			// size
 			$size = substr($columns[2], strpos($columns[2], ', Size ') + 7);
