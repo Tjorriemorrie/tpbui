@@ -3,6 +3,7 @@
 namespace My\UiBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use My\UiBundle\Entity\Item;
 
 /**
  * ItemRepository
@@ -17,14 +18,20 @@ class ItemRepository extends EntityRepository
 	 */
 	public function findByCategory($category)
 	{
-		$qb = $this->getEntityManager()->createQueryBuilder();
-		return $qb->select('i')
-			->from('MyUiBundle:Item', 'i')
-			->where('i.category = ?2')->setParameter(2, $category)
-			->orderBy('i.createdAt', 'ASC')
-			->addOrderBy('i.title', 'ASC')
-			->getQuery()
-			->getResult();
+		$all = array();
+		foreach (array(Item::STATUS_UNWANTED, Item::STATUS_NEW, Item::STATUS_DOWNLOAD) as $status) {
+			$qb = $this->getEntityManager()->createQueryBuilder();
+			$items = $qb->select('i')
+				->from('MyUiBundle:Item', 'i')
+				->where('i.category = ?2')->setParameter(2, $category)
+				->andWhere('i.status = ?1')->setParameter(1, $status)
+				->orderBy((Item::STATUS_NEW ? 'i.createdAt' : 'i.page'), 'ASC')
+				->addOrderBy('i.popularity', 'DESC')
+				->getQuery()
+				->getResult();
+			$all = array_merge($all, $items);
+		}
+		return $all;
 	}
 
 
