@@ -91,6 +91,7 @@ class DefaultController extends Controller
 	 */
 	public function scrapeAction()
 	{
+		set_time_limit(0);
 		$scrapeMan = $this->get('manager.scrape');
 		$torrentMan = $this->get('manager.torrent');
 

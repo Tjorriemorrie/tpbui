@@ -45,41 +45,54 @@ class ScrapeManager
 			ITEM::CATEGORY_OTHER,
 		);
 
-		$notfound = true;
-		for ($p=0; $p<10; $p++) {
-			$list = array();
-			foreach ($categories as $category) {
-				$list[$category] = $this->torrentMan->findCategoryPagePopularity($category, $p);
-			}
-			arsort($list);
-//			die(var_dump($list));
-			foreach ($list as $category => $date) {
+		$exit = 20;
+		foreach ($categories as $category) {
+			for ($p=0; $p<100; $p++) {
+				$key = implode('.', array($category, $p));
+
 				$lastUpdated = $this->torrentMan->findUpdateLast($category, $p);
 //				die(var_dump($lastUpdated));
-				if (is_null($date) || new \DateTime($lastUpdated) < new \DateTime('-1 hour')) {
-					$this->category = $category;
-					$this->page = $p;
-					$notfound = false;
+				die(var_dump(new \DateTime($lastUpdated)));
+
+//				if (is_null($lastUpdated)) {
+				if (new \DateTime($lastUpdated) == new \DateTime()) {
+					$list = array($key => 1);
 					break(2);
 				}
+
+				if (new \DateTime($lastUpdated) > new \DateTime('-1 hour')) {
+					$exit--;
+					if ($exit < 1) {
+						throw new \Exception('finished');
+					}
+					continue;
+				}
+
+				$list[$key] = $this->torrentMan->findCategoryPagePopularity($category, $p);
+				break;
 			}
 		}
 
-		if ($notfound) {
-			throw new \Exception('finished');
-		} elseif ($category === ITEM::CATEGORY_SERIES_HD) {
+		arsort($list);
+		reset($list);
+		die(var_dump($list));
+		list($category, $p) = explode('.', key($list));
+		$this->category = $category;
+		$this->page = $p;
+
+		if ($category == ITEM::CATEGORY_SERIES_HD) {
 			$this->tab = 'series';
-		} elseif ($category === ITEM::CATEGORY_MOVIES_HD) {
+		} elseif ($category == ITEM::CATEGORY_MOVIES_HD) {
 			$this->tab = 'movies';
-		} elseif ($category === ITEM::CATEGORY_GAMES_PC) {
+		} elseif ($category == ITEM::CATEGORY_GAMES_PC) {
 			$this->tab = 'games';
-		} elseif ($category === ITEM::CATEGORY_APPS_WIN) {
+		} elseif ($category == ITEM::CATEGORY_APPS_WIN) {
 			$this->tab = 'windows';
-		} elseif ($category === ITEM::CATEGORY_MUSIC) {
+		} elseif ($category == ITEM::CATEGORY_MUSIC) {
 			$this->tab = 'music';
-		} elseif ($category === ITEM::CATEGORY_AUDIOBOOKS) {
+		} elseif ($category == ITEM::CATEGORY_AUDIOBOOKS) {
 			$this->tab = 'audiobooks';
-		} elseif ($category === ITEM::CATEGORY_OTHER) {
+		} elseif ($category == ITEM::CATEGORY_OTHER) {
 			$this->tab = 'other';
 		} else {
 			throw new \Exception('unknown category');
