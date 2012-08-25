@@ -45,37 +45,38 @@ class ScrapeManager
 			ITEM::CATEGORY_OTHER,
 		);
 
-		$exit = 20;
+		$list = array();
 		foreach ($categories as $category) {
-			for ($p=0; $p<100; $p++) {
+			for ($p=0; $p<10; $p++) {
+
 				$key = implode('.', array($category, $p));
 
 				$lastUpdated = $this->torrentMan->findUpdateLast($category, $p);
 //				die(var_dump($lastUpdated));
-				die(var_dump(new \DateTime($lastUpdated)));
 
-//				if (is_null($lastUpdated)) {
-				if (new \DateTime($lastUpdated) == new \DateTime()) {
-					$list = array($key => 1);
-					break(2);
-				}
-
-				if (new \DateTime($lastUpdated) > new \DateTime('-1 hour')) {
-					$exit--;
-					if ($exit < 1) {
-						throw new \Exception('finished');
-					}
+				if (is_null($lastUpdated)) {
+					$list[$key] = null;
+				} elseif (new \DateTime($lastUpdated) > new \DateTime('-1 hour')) {
 					continue;
+				} else {
+					$list[$key] = $this->torrentMan->findCategoryPagePopularity($category, $p);
 				}
-
-				$list[$key] = $this->torrentMan->findCategoryPagePopularity($category, $p);
-				break;
 			}
 		}
 
+		if (!count($list)) {
+			throw new \Exception('done:<br>' . implode('<br>', array_keys($list)));
+		}
+
 		arsort($list);
+
+		if (($key = array_search(null, $list)) != false) {
+//			die(var_dump($list));
+			$list = array_reverse($list);
+		}
+
 		reset($list);
-		die(var_dump($list));
+//		die(var_dump($list));
 		list($category, $p) = explode('.', key($list));
 		$this->category = $category;
 		$this->page = $p;
