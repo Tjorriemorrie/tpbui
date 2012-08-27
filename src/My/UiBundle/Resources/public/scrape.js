@@ -14,6 +14,13 @@ function scrape() {
         }, 2000);
     })
     .error(function(jqXHR) {
+        if (jqXHR.statusText == 'error') {
+            setTimeout(function() {
+                scrape();
+            }, 2000);
+        }
+        console.log(jqXHR);
+//        alert('error!');
         $('#log').prepend('<p>' + jqXHR.status + " " + jqXHR.statusText + "<br>" + jqXHR.responseText + '</p>');
     });
 }

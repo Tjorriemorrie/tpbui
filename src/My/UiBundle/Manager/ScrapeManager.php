@@ -47,7 +47,7 @@ class ScrapeManager
 
 		$list = array();
 		foreach ($categories as $category) {
-			for ($p=0; $p<10; $p++) {
+			for ($p=0; $p<20; $p++) {
 
 				$key = implode('.', array($category, $p));
 
