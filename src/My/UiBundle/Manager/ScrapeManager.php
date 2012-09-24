@@ -46,8 +46,8 @@ class ScrapeManager
 		);
 
 		$list = array();
-		foreach ($categories as $category) {
-			for ($p=0; $p<20; $p++) {
+		for ($p=0; $p<30; $p++) {
+			foreach ($categories as $category) {
 
 				$key = implode('.', array($category, $p));
 
@@ -61,6 +61,10 @@ class ScrapeManager
 				} else {
 					$list[$key] = $this->torrentMan->findCategoryPagePopularity($category, $p);
 				}
+//				break;
+			}
+			if (count($list)) {
+				break;
 			}
 		}
 
