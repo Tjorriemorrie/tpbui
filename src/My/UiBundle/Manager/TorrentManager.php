@@ -72,9 +72,9 @@ class TorrentManager
 		$this->em->flush();
 
 		$content['category'] = $item->getCategory();
-		if ($item->getCategory() === ITEM::CATEGORY_SERIES_HD) {
+		if ($item->getCategory() === ITEM::CATEGORY_SERIES_HD || $item->getCategory() === Item::CATEGORY_SERIES_SD) {
 			$content['tab'] = 'series';
-		} elseif ($item->getCategory() === ITEM::CATEGORY_MOVIES_HD) {
+		} elseif ($item->getCategory() === ITEM::CATEGORY_MOVIES_HD || $item->getCategory() === ITEM::CATEGORY_MOVIES_SD) {
 			$content['tab'] = 'movies';
 		} elseif ($item->getCategory() === ITEM::CATEGORY_GAMES_PC) {
 			$content['tab'] = 'games';

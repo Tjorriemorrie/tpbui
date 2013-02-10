@@ -29,12 +29,14 @@ class Item
      * @ORM\Column(type="smallint")
      */
 	private $category;
-	const CATEGORY_SERIES_HD = 208;
-	const CATEGORY_MOVIES_HD = 207;
-	const CATEGORY_GAMES_PC = 401;
-	const CATEGORY_APPS_WIN = 301;
 	const CATEGORY_MUSIC = 101;
 	const CATEGORY_AUDIOBOOKS = 102;
+	const CATEGORY_MOVIES_SD = 201;
+	const CATEGORY_SERIES_SD = 205;
+	const CATEGORY_MOVIES_HD = 207;
+	const CATEGORY_SERIES_HD = 208;
+	const CATEGORY_APPS_WIN = 301;
+	const CATEGORY_GAMES_PC = 401;
 	const CATEGORY_OTHER = 500;
 
 	/**

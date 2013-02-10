@@ -26,8 +26,8 @@ class DefaultController extends Controller
     {
         $torrentMan = $this->get('manager.torrent');
 
-	    $series = $torrentMan->findByCategory(Item::CATEGORY_SERIES_HD);
-	    $movies = $torrentMan->findByCategory(Item::CATEGORY_MOVIES_HD);
+	    $series = $torrentMan->findByCategory(Item::CATEGORY_SERIES_SD);
+	    $movies = $torrentMan->findByCategory(Item::CATEGORY_MOVIES_SD);
 	    $games = $torrentMan->findByCategory(Item::CATEGORY_GAMES_PC);
 	    $windows = $torrentMan->findByCategory(Item::CATEGORY_APPS_WIN);
 	    $music = $torrentMan->findByCategory(Item::CATEGORY_MUSIC);
@@ -67,8 +67,9 @@ class DefaultController extends Controller
 	 */
 	public function unwantedAction()
 	{
-		$id = $this->getRequest()->query->get('id');
+		/* @var TorrentManager $torrentMan */
 		$torrentMan = $this->get('manager.torrent');
+		$id = $this->getRequest()->query->get('id');
 
 		$response = new Response();
 		$response->headers->set('Content-Type', 'application/json');

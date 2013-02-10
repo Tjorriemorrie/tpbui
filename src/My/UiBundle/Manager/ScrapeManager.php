@@ -36,7 +36,7 @@ class ScrapeManager
 	public function setup()
 	{
 		$categories = array(
-			ITEM::CATEGORY_SERIES_HD,
+			ITEM::CATEGORY_SERIES_SD,
 			ITEM::CATEGORY_MOVIES_HD,
 			ITEM::CATEGORY_GAMES_PC,
 			ITEM::CATEGORY_APPS_WIN,
@@ -46,7 +46,7 @@ class ScrapeManager
 		);
 
 		$list = array();
-		for ($p=0; $p<30; $p++) {
+		for ($p=0; $p<15; $p++) {
 			foreach ($categories as $category) {
 
 				$key = implode('.', array($category, $p));
@@ -56,7 +56,7 @@ class ScrapeManager
 
 				if (is_null($lastUpdated)) {
 					$list[$key] = null;
-				} elseif (new \DateTime($lastUpdated) > new \DateTime('-1 hour')) {
+				} elseif (new \DateTime($lastUpdated) > new \DateTime('-4 hour')) {
 					continue;
 				} else {
 					$list[$key] = $this->torrentMan->findCategoryPagePopularity($category, $p);
@@ -85,9 +85,9 @@ class ScrapeManager
 		$this->category = $category;
 		$this->page = $p;
 
-		if ($category == ITEM::CATEGORY_SERIES_HD) {
+		if ($category == ITEM::CATEGORY_SERIES_HD || $category == Item::CATEGORY_SERIES_SD) {
 			$this->tab = 'series';
-		} elseif ($category == ITEM::CATEGORY_MOVIES_HD) {
+		} elseif ($category == ITEM::CATEGORY_MOVIES_HD || $category == Item::CATEGORY_MOVIES_SD) {
 			$this->tab = 'movies';
 		} elseif ($category == ITEM::CATEGORY_GAMES_PC) {
 			$this->tab = 'games';
@@ -117,14 +117,15 @@ class ScrapeManager
 
 		$rows = explode('<tr>', $table);
 		array_shift($rows);
+		array_shift($rows);
 		array_pop($rows);
 //		die(var_dump($rows));
 
 		$infos = array();
 		foreach ($rows as $key => $row) {
-//			die(var_dump($row));
+//			die(print_r($row));
 			$columns = explode('<td', $row);
-			//die(print_r($columns));
+//			die(print_r($columns));
 
 			// id
 			$id = substr($columns[2], strpos($columns[2], 'href="/torrent/') + 15);
