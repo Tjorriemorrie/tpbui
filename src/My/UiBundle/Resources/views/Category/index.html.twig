@@ -1,7 +1,12 @@
 {% extends 'MyUiBundle::layout.html.twig' %}
 
 {% block content %}
+    {% for i in range(1, pages) %}
+        {% render 'MyUiBundle:Category:page' with {page: i} %}
+    {% endfor %}
 {% endblock %}
+
+{% block title %}{{ category }} | {{ parent() }}{% endblock %}
 
 {% block javascripts %}
     {{ parent() }}

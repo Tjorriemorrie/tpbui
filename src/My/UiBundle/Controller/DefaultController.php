@@ -26,7 +26,6 @@ class DefaultController extends Controller
     {
         $torrentMan = $this->get('manager.torrent');
 
-	    $series = $torrentMan->findByCategory(Item::CATEGORY_SERIES_SD);
 	    $movies = $torrentMan->findByCategory(Item::CATEGORY_MOVIES_SD);
 	    $games = $torrentMan->findByCategory(Item::CATEGORY_GAMES_PC);
 	    $windows = $torrentMan->findByCategory(Item::CATEGORY_APPS_WIN);
@@ -34,7 +33,7 @@ class DefaultController extends Controller
 	    $audiobooks = $torrentMan->findByCategory(Item::CATEGORY_AUDIOBOOKS);
 	    $other = $torrentMan->findByCategory(Item::CATEGORY_OTHER);
 
-	    return array('series' => $series, 'movies' => $movies, 'games' => $games, 'windows' => $windows, 'music' => $music, 'audiobooks' => $audiobooks, 'other' => $other);
+	    return array('movies' => $movies, 'games' => $games, 'windows' => $windows, 'music' => $music, 'audiobooks' => $audiobooks, 'other' => $other);
     }
 
 

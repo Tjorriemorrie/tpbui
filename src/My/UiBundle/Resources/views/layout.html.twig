@@ -1,12 +1,7 @@
 {% extends '::base.html.twig' %}
 
-{% block title %}UI &mdash; {{ parent() }}{% endblock %}
-
 {% block body %}
-	<h2 class="title"><a href="{{ path('home') }}">TPB UI</a> &mdash; <a href="{{ path('one') }}">ONE</a></h2>
-	
-	<div id="content" class="cf">
-		{% block content %}{% endblock %}
-	</div>
-	
+    {% include 'MyUiBundle::navigation.html.twig' %}
+    {% block content %}{% endblock %}
+</div>
 {% endblock %}
