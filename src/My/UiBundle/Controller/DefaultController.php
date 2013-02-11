@@ -7,7 +7,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Response;
 
+use My\UiBundle\Manager\CategoryManager;
+use My\UiBundle\Entity\Category;
+
 use My\UiBundle\Manager\ScrapeManager;
+
 use My\UiBundle\Manager\TorrentManager;
 use My\UiBundle\Entity\Torrent;
 
@@ -19,12 +23,31 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-	    return array();
+        /** @var $categoryMan CategoryManager */
+        $categoryMan = $this->get('manager.category');
+        $categories = $categoryMan->findAll();
+
+
+        return array('categories' => $categories);
     }
 
+    /**
+     * @Route("/navigation", name="navigation", defaults={"id"=null})
+     * @Template()
+     */
+    public function navigationAction($id)
+    {
+        /** @var $categoryMan CategoryManager */
+        $categoryMan = $this->get('manager.category');
+        $categories = $categoryMan->findAll();
+
+        //die(var_dump($id));
+
+        return array('selected' => $id, 'categories' => $categories);
+    }
 
 	/**
-	 * @Route("/downloaded", name="downloaded")
+	 * @Route("/torrent/downloaded", name="downloaded")
 	 */
 	public function downloadedAction()
 	{
@@ -48,7 +71,7 @@ class DefaultController extends Controller
 
 
 	/**
-	 * @Route("/unwanted", name="unwanted")
+	 * @Route("/torrent/unwanted", name="unwanted")
 	 */
 	public function unwantedAction()
 	{

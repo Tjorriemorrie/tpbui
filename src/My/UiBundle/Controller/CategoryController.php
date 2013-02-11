@@ -7,7 +7,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Response;
 
-use My\UiBundle\Entity\Item;
+use My\UiBundle\Manager\CategoryManager;
+use My\UiBundle\Entity\Category;
+
 use My\UiBundle\Manager\TorrentManager;
 
 /**
@@ -16,23 +18,25 @@ use My\UiBundle\Manager\TorrentManager;
 class CategoryController extends Controller
 {
     /**
-     * @Route("/{category}", name="category")
+     * @Route("/{id}", name="category")
      * @Template()
      */
-    public function indexAction($category)
+    public function indexAction(Category $category)
     {
-        /** @var $torrentMan TorrentManager */
-        $torrentMan = $this->get('manager.torrent');
-
+        //die(var_dump($category));
         return array('category' => $category);
     }
 
     /**
-     * @Route("page", name="category_page")
+     * @Route("/{category}/{page}", name="category_page")
      * @Template()
      */
-    public function pageAction($page)
+    public function pageAction(Category $category, $page)
     {
+        /** @var $torrentMan TorrentManager */
+        $torrentMan = $this->get('manager.torrent');
+        $torrents = $torrentMan->findByCategory($category);
+        
         return array('page' => $page);
     }
 }

@@ -1,0 +1,10 @@
+<div class="navbar">
+    <div class="navbar-inner">
+        <a class="brand" href="{{ path('home') }}">TPB UI</a>
+        <ul class="nav">
+            {% for category in categories %}
+                <li class="{{ selected == category.id ? 'active' : '' }}"><a href="{{ path('category', {id: category.id}) }}">{{ category.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

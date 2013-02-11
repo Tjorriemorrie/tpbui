@@ -65,12 +65,12 @@ class Torrent
 	/**
 	 * @ORM\Column(type="datetime")
 	 */
-	protected $createdAt;
+	protected $created_at;
 
 	/**
 	 * @ORM\Column(type="datetime", nullable=true)
 	 */
-	protected $updatedAt;
+	protected $updated_at;
 
 	////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////
@@ -261,49 +261,49 @@ class Torrent
     }
 
     /**
-     * Set createdAt
+     * Set created_at
      *
      * @param \DateTime $createdAt
      * @return Torrent
      */
     public function setCreatedAt($createdAt)
     {
-        $this->createdAt = $createdAt;
+        $this->created_at = $createdAt;
     
         return $this;
     }
 
     /**
-     * Get createdAt
+     * Get created_at
      *
      * @return \DateTime 
      */
     public function getCreatedAt()
     {
-        return $this->createdAt;
+        return $this->created_at;
     }
 
     /**
-     * Set updatedAt
+     * Set updated_at
      *
      * @param \DateTime $updatedAt
      * @return Torrent
      */
     public function setUpdatedAt($updatedAt)
     {
-        $this->updatedAt = $updatedAt;
+        $this->updated_at = $updatedAt;
     
         return $this;
     }
 
     /**
-     * Get updatedAt
+     * Get updated_at
      *
      * @return \DateTime 
      */
     public function getUpdatedAt()
     {
-        return $this->updatedAt;
+        return $this->updated_at;
     }
 
     /**

@@ -65,12 +65,12 @@ class Torrent
 	/**
 	 * @ORM\Column(type="datetime")
 	 */
-	protected $createdAt;
+	protected $created_at;
 
 	/**
 	 * @ORM\Column(type="datetime", nullable=true)
 	 */
-	protected $updatedAt;
+	protected $updated_at;
 
 	////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////

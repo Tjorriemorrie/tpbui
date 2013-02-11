@@ -99,9 +99,10 @@ class TorrentManager
 	////////////////////////////////////////////////////////
 
 	/**
-     * Find By
+     * Find By Category
+     * @return Torrent[]
      */
-    public function findByCategory($categoryCode)
+    public function findByCategory(Category $category)
     {
         return $this->repo->findByCategory($categoryCode);
     }

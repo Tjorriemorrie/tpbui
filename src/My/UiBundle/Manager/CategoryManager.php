@@ -5,6 +5,8 @@ namespace My\UiBundle\Manager;
 use Doctrine\ORM\EntityManager;
 use My\UiBundle\Repository\CategoryRepository;
 
+use My\UiBundle\Entity\Category;
+
 class CategoryManager
 {
     private $em;
@@ -23,4 +25,22 @@ class CategoryManager
 	////////////////////////////////////////////////////////
     // REPO
 	////////////////////////////////////////////////////////
+
+    /**
+     * Find
+     * @return Category
+     */
+    public function find($id)
+    {
+        return $this->repo->find($id);
+    }
+
+    /**
+     * Find All
+     * @return Category[]
+     */
+    public function findAll()
+    {
+        return $this->repo->findAll();
+    }
 }
