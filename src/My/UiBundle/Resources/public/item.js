@@ -27,5 +27,3 @@
         return false;
     };
 }(jQuery, window.Item = window.Item || {}));
-
-Item.init();

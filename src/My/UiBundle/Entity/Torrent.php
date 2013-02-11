@@ -5,137 +5,94 @@ namespace My\UiBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="My\UiBundle\Repository\ItemRepository")
- * @ORM\Table(name="items")
+ * @ORM\Entity(repositoryClass="My\UiBundle\Repository\TorrentRepository")
+ * @ORM\Table
  */
-class Item
+class Torrent
 {
 	/**
-	 * @ORM\Id @ORM\GeneratedValue(strategy="NONE")
 	 * @ORM\Column(type="bigint")
+	 * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
 	 */
-	private $id;
+	protected $id;
+
+	/**
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="torrents")
+     */
+	protected $category;
 
 	/**
 	 * @ORM\Column(type="smallint")
 	 */
-	private $status;
+	protected $status;
 	const STATUS_BAD		= -2;
 	const STATUS_UNWANTED	= -1;
 	const STATUS_NEW		= 0;
 	const STATUS_DOWNLOAD	= 1;
 
 	/**
-     * @ORM\Column(type="smallint")
-     */
-	private $category;
-	const CATEGORY_MUSIC = 101;
-	const CATEGORY_AUDIOBOOKS = 102;
-	const CATEGORY_MOVIES_SD = 201;
-	const CATEGORY_SERIES_SD = 205;
-	const CATEGORY_MOVIES_HD = 207;
-	const CATEGORY_SERIES_HD = 208;
-	const CATEGORY_APPS_WIN = 301;
-	const CATEGORY_GAMES_PC = 401;
-	const CATEGORY_OTHER = 500;
-
-	/**
 	 * @ORM\Column(type="smallint")
 	 */
-	private $page;
+	protected $page;
 
     /**
      * @ORM\Column(type="string", length=500)
      */
-    private $title;
+    protected $title;
 
     /**
     * @ORM\Column(type="string", length=25)
     */
-    private $size;
+    protected $size;
 
 	/**
 	 * @ORM\Column(type="string", length=255)
 	 */
-	private $uploader;
+	protected $uploader;
 
 	/**
 	 * @ORM\Column(type="text")
 	 */
-    private $linkMagnet;
+    protected $linkMagnet;
 
     /**
      * @ORM\Column(type="integer")
      */
-	private $popularity;
+	protected $popularity;
 
 
 	/**
 	 * @ORM\Column(type="datetime")
 	 */
-	private $createdAt;
+	protected $createdAt;
 
 	/**
 	 * @ORM\Column(type="datetime", nullable=true)
 	 */
-	private $updatedAt;
+	protected $updatedAt;
 
 	////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////
 
-	/**
-	 * Construct
-	 */
-	public function __construct()
-	{
-		$this->createdAt = new \DateTime();
-		$this->status = self::STATUS_NEW;
-	}
-
-
-	/**
-	 * Is New
-	 */
-	public function isNew()
-	{
-		return ($this->getStatus() === self::STATUS_NEW ? true : false);
-	}
-
-
-	/**
-	 * Is Downloaded
-	 */
-	public function isDownloaded()
-	{
-		return ($this->getStatus() === self::STATUS_DOWNLOAD ? true : false);
-	}
-
-
-	/**
-	 * Is Unwanted
-	 */
-	public function isUnwanted()
-	{
-		return ($this->getStatus() <= self::STATUS_UNWANTED ? true : false);
-	}
-
-	////////////////////////////////////////////////////////////////////
-	////////////////////////////////////////////////////////////////////
 
     /**
      * Set id
      *
-     * @param bigint $id
+     * @param integer $id
+     * @return Torrent
      */
     public function setId($id)
     {
         $this->id = $id;
+    
+        return $this;
     }
 
     /**
      * Get id
      *
-     * @return bigint 
+     * @return integer 
      */
     public function getId()
     {
@@ -145,17 +102,20 @@ class Item
     /**
      * Set status
      *
-     * @param smallint $status
+     * @param integer $status
+     * @return Torrent
      */
     public function setStatus($status)
     {
         $this->status = $status;
+    
+        return $this;
     }
 
     /**
      * Get status
      *
-     * @return smallint 
+     * @return integer 
      */
     public function getStatus()
     {
@@ -163,39 +123,22 @@ class Item
     }
 
     /**
-     * Set category
-     *
-     * @param smallint $category
-     */
-    public function setCategory($category)
-    {
-        $this->category = $category;
-    }
-
-    /**
-     * Get category
-     *
-     * @return smallint 
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
      * Set page
      *
-     * @param smallint $page
+     * @param integer $page
+     * @return Torrent
      */
     public function setPage($page)
     {
         $this->page = $page;
+    
+        return $this;
     }
 
     /**
      * Get page
      *
-     * @return smallint 
+     * @return integer 
      */
     public function getPage()
     {
@@ -206,10 +149,13 @@ class Item
      * Set title
      *
      * @param string $title
+     * @return Torrent
      */
     public function setTitle($title)
     {
         $this->title = $title;
+    
+        return $this;
     }
 
     /**
@@ -226,10 +172,13 @@ class Item
      * Set size
      *
      * @param string $size
+     * @return Torrent
      */
     public function setSize($size)
     {
         $this->size = $size;
+    
+        return $this;
     }
 
     /**
@@ -246,10 +195,13 @@ class Item
      * Set uploader
      *
      * @param string $uploader
+     * @return Torrent
      */
     public function setUploader($uploader)
     {
         $this->uploader = $uploader;
+    
+        return $this;
     }
 
     /**
@@ -265,17 +217,20 @@ class Item
     /**
      * Set linkMagnet
      *
-     * @param text $linkMagnet
+     * @param string $linkMagnet
+     * @return Torrent
      */
     public function setLinkMagnet($linkMagnet)
     {
         $this->linkMagnet = $linkMagnet;
+    
+        return $this;
     }
 
     /**
      * Get linkMagnet
      *
-     * @return text 
+     * @return string 
      */
     public function getLinkMagnet()
     {
@@ -286,10 +241,13 @@ class Item
      * Set popularity
      *
      * @param integer $popularity
+     * @return Torrent
      */
     public function setPopularity($popularity)
     {
         $this->popularity = $popularity;
+    
+        return $this;
     }
 
     /**
@@ -305,17 +263,20 @@ class Item
     /**
      * Set createdAt
      *
-     * @param datetime $createdAt
+     * @param \DateTime $createdAt
+     * @return Torrent
      */
     public function setCreatedAt($createdAt)
     {
         $this->createdAt = $createdAt;
+    
+        return $this;
     }
 
     /**
      * Get createdAt
      *
-     * @return datetime 
+     * @return \DateTime 
      */
     public function getCreatedAt()
     {
@@ -325,20 +286,46 @@ class Item
     /**
      * Set updatedAt
      *
-     * @param datetime $updatedAt
+     * @param \DateTime $updatedAt
+     * @return Torrent
      */
     public function setUpdatedAt($updatedAt)
     {
         $this->updatedAt = $updatedAt;
+    
+        return $this;
     }
 
     /**
      * Get updatedAt
      *
-     * @return datetime 
+     * @return \DateTime 
      */
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \My\UiBundle\Entity\Category $category
+     * @return Torrent
+     */
+    public function setCategory(\My\UiBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+    
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \My\UiBundle\Entity\Category 
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }

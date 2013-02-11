@@ -13,7 +13,7 @@
 
 </head>
 
-<body>
+<body data-base-url="{{ app.request.baseurl }}">>
     <div class="container-fluid">
         {% block body %}{% endblock %}
     </div>

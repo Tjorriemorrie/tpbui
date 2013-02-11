@@ -20,11 +20,11 @@ class ScrapeManager
 	    $this->session = $session;
     }
 
-
-	public function run()
+    /**
+     * Run scraper
+     */
+    public function run($category, $page)
 	{
-		$this->setup();
-
 		$infos = $this->scrape();
 
 		$this->torrentMan->store($infos, $this->category, $this->page);
@@ -32,80 +32,10 @@ class ScrapeManager
 		return array('tab' => $this->tab, 'category' => $this->category, 'page' => $this->page);
 	}
 
-
-	public function setup()
-	{
-		$categories = array(
-			ITEM::CATEGORY_SERIES_SD,
-			ITEM::CATEGORY_MOVIES_HD,
-			ITEM::CATEGORY_GAMES_PC,
-			ITEM::CATEGORY_APPS_WIN,
-//			ITEM::CATEGORY_MUSIC,
-//			ITEM::CATEGORY_AUDIOBOOKS,
-//			ITEM::CATEGORY_OTHER,
-		);
-
-		$list = array();
-		for ($p=0; $p<15; $p++) {
-			foreach ($categories as $category) {
-
-				$key = implode('.', array($category, $p));
-
-				$lastUpdated = $this->torrentMan->findUpdateLast($category, $p);
-//				die(var_dump($lastUpdated));
-
-				if (is_null($lastUpdated)) {
-					$list[$key] = null;
-				} elseif (new \DateTime($lastUpdated) > new \DateTime('-4 hour')) {
-					continue;
-				} else {
-					$list[$key] = $this->torrentMan->findCategoryPagePopularity($category, $p);
-				}
-//				break;
-			}
-			if (count($list)) {
-				break;
-			}
-		}
-
-		if (!count($list)) {
-			throw new \Exception('done:<br>' . implode('<br>', array_keys($list)));
-		}
-
-		arsort($list);
-
-		if (($key = array_search(null, $list)) != false) {
-//			die(var_dump($list));
-			$list = array_reverse($list);
-		}
-
-		reset($list);
-//		die(var_dump($list));
-		list($category, $p) = explode('.', key($list));
-		$this->category = $category;
-		$this->page = $p;
-
-		if ($category == ITEM::CATEGORY_SERIES_HD || $category == Item::CATEGORY_SERIES_SD) {
-			$this->tab = 'series';
-		} elseif ($category == ITEM::CATEGORY_MOVIES_HD || $category == Item::CATEGORY_MOVIES_SD) {
-			$this->tab = 'movies';
-		} elseif ($category == ITEM::CATEGORY_GAMES_PC) {
-			$this->tab = 'games';
-		} elseif ($category == ITEM::CATEGORY_APPS_WIN) {
-			$this->tab = 'windows';
-		} elseif ($category == ITEM::CATEGORY_MUSIC) {
-			$this->tab = 'music';
-		} elseif ($category == ITEM::CATEGORY_AUDIOBOOKS) {
-			$this->tab = 'audiobooks';
-		} elseif ($category == ITEM::CATEGORY_OTHER) {
-			$this->tab = 'other';
-		} else {
-			throw new \Exception('unknown category');
-		}
-	}
-
-
-	public function scrape()
+    /**
+     * Scrape PirateBay
+     */
+    public function scrape($categoryCode)
 	{
 		$url = 'http://thepiratebay.se/browse/' . $this->category . '/' . $this->page . '/7';
 		$html = file_get_contents($url);

@@ -1,28 +1,17 @@
 ;(function($, Scraper, undefined) {
+    var category = $('#category').data('category');
+    var page = 0;
     Scraper.init = function() {
-
+        scrape();
     };
 
     var scrape = function() {
-        $.getJSON('/scrape', function(response) {
-    //        console.log(response.html);
-            $('#log').prepend('<p>finished scraping ' + response.tab + ':' + response.category + ':' + response.page + '</p>');
+        $.getJSON(App.baseurl + '/scrape/' + category + '/' + page)
+            .success(response) {
             $('#' + response.tab).html(response.html);
             setTimeout(function() {
                 scrape();
             }, 2000);
-        })
-        .error(function(jqXHR) {
-            if (jqXHR.statusText == 'error') {
-                setTimeout(function() {
-                    scrape();
-                }, 2000);
-            }
-            console.log(jqXHR);
-    //        alert('error!');
-            $('#log').prepend('<p>' + jqXHR.status + " " + jqXHR.statusText + "<br>" + jqXHR.responseText + '</p>');
         });
     };
 }(jQuery, window.Scraper = window.Scraper || {}));
-
-Scraper.init();

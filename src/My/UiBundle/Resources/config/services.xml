@@ -4,22 +4,24 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <!--
     <parameters>
-        <parameter key="my_ui.example.class">My\UiBundle\Example</parameter>
+        <parameter key="class.manager.category">My\UiBundle\Manager\CategoryManager</parameter>
     </parameters>
-    -->
 
     <services>
 
-    <service id="manager.torrent" class="My\UiBundle\Manager\TorrentManager">
-        <argument type="service" id="doctrine.orm.entity_manager" />
-    </service>
+        <service id="manager.torrent" class="My\UiBundle\Manager\TorrentManager">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>
 
-    <service id="manager.scrape" class="My\UiBundle\Manager\ScrapeManager">
-        <argument type="service" id="manager.torrent" />
-        <argument type="service" id="session" />
-    </service>
+        <service id="manager.scrape" class="My\UiBundle\Manager\ScrapeManager">
+            <argument type="service" id="manager.torrent" />
+            <argument type="service" id="session" />
+        </service>
 
-</services>
+        <service id="manager.category" class="%class.manager.category%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>
+
+    </services>
 </container>
