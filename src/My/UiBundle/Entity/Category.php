@@ -32,10 +32,10 @@ class Category
      */
 	protected $name;
 
-	/**
-	 * @ORM\Column(type="boolean")
-	 */
-	protected $hd;
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $pages;
 
 	/**
 	 * @ORM\Column(type="datetime")
@@ -49,6 +49,7 @@ class Category
 
 	////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////
+
     /**
      * Constructor
      */
@@ -114,26 +115,26 @@ class Category
     }
 
     /**
-     * Set hd
+     * Set pages
      *
-     * @param boolean $hd
+     * @param integer $pages
      * @return Category
      */
-    public function setHd($hd)
+    public function setPages($pages)
     {
-        $this->hd = $hd;
+        $this->pages = $pages;
     
         return $this;
     }
 
     /**
-     * Get hd
+     * Get pages
      *
-     * @return boolean 
+     * @return integer 
      */
-    public function getHd()
+    public function getPages()
     {
-        return $this->hd;
+        return $this->pages;
     }
 
     /**

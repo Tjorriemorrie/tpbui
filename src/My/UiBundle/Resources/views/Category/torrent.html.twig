@@ -1,0 +1,13 @@
+<dl class="torrent {{ torrent.status == -1 ? 'alert-danger' : '' }} {{ torrent.status == 1 ? 'alert-success' : '' }}" data-torrent-id="{{ torrent.id }}">
+	<dt>
+		<em>{{ torrent.uploader }} ~</em>
+		{{ torrent.title }}
+	</dt>
+	<dd>
+		<a href="{{ torrent.linkMagnet }}"><i class="icon-download"></i></a>
+		<a style="cursor:pointer;"><i class="icon-remove"></i></a>
+		{{ torrent.size }}
+		<a href="http://thepiratebay.se/torrent/{{ torrent.id }}" target="_new"><img src="{{ asset('img/tpb.gif') }}" width="14"></a>
+		<em>{{ torrent.popularity|number_format }}</em>
+	</dd>
+</dl>

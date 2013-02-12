@@ -4,7 +4,7 @@
     {% render url('navigation', {id: category.id}) %}
 
     <section id="category" data-category="{{ category.id }}">
-        {% for i in range(1, pages) %}
+        {% for i in range(1, category.pages) %}
             {% render url('category_page', {category: category.id, page: i}) %}
         {% endfor %}
     </section>
@@ -14,7 +14,7 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script type="text/javascript" src="{{ asset('bundles/myui/item.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/myui/scraper.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/myui/app.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/myui/torrent.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/myui/scraper.js') }}"></script>
 {% endblock %}

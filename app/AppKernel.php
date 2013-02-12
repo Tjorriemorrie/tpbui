@@ -8,6 +8,13 @@ class AppKernel extends Kernel
     public function init()
     {
         date_default_timezone_set('Africa/Johannesburg');
+
+        if (!function_exists('exception_error_handler')) {
+            function exception_error_handler($errno, $errstr, $errfile, $errline ) {
+                throw new \ErrorException($errstr, 0, $errno, $errfile, $errline);
+            }
+        }
+        set_error_handler("exception_error_handler");
     }
 
 	public function registerBundles()

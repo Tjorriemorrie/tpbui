@@ -4,12 +4,10 @@
     App.init = function() {
         jQuery.ajaxSetup({
             error: function(jqXHR, textStatus, errorThrown) {
-                alert('[' + jqXHR.status + ' ' + jqXHR.statusText + '] ' + jqXHR.responseText);
+                //alert('[' + jqXHR.status + ' ' + jqXHR.statusText + '] ' + jqXHR.responseText);
+                Scraper.scrape();
             }
         });
-
-        Item.init();
-        Scraper.init();
     };
 
 }(jQuery, window.App = window.App || {}));

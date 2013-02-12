@@ -3,39 +3,41 @@
 namespace My\UiBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
-use My\UiBundle\Entity\Item;
+use My\UiBundle\Repository\TorrentRepository;
+use My\UiBundle\Entity\Torrent;
+use My\UiBundle\Entity\Category;
 
 class TorrentManager
 {
-    private $em;
-	/**
-	 * @var \My\UiBundle\Repository\ItemRepository
-	 */
-	private $repo;
+    protected $em;
+    /** @var TorrentRepository */
+	protected $repo;
 
+    /**
+     * Construct
+     */
     public function __construct(EntityManager $em)
     {
         $this->em = $em;
-        $this->repo = $em->getRepository('MyUiBundle:Item');
+        $this->repo = $em->getRepository('MyUiBundle:Torrent');
     }
-
 
 	/**
 	 * Stores scrapes info
 	 */
-	public function store($infos, $category, $page)
+	public function saveInfos($infos, Category $category, $page)
 	{
 		$this->repo->incrementPage($category, $page);
 
 		foreach ($infos as $info) {
 //			die(var_dump($info));
-			$item = $this->find($info['id']);
-			if ($item) {
-				$item->setPage($page);
-				$item->setPopularity($info['popularity']);
-				$item->setUpdatedAt(new \DateTime());
+			$torrent = $this->find($info['id']);
+			if ($torrent) {
+				$torrent->setUpdatedAt(new \DateTime());
+                $torrent->setPage($page);
+                $torrent->setPopularity($info['popularity']);
 			} else {
-				$this->create($info, $category, $page);
+				$torrent = $this->create($info, $category, $page);
 			}
 		}
 
@@ -44,53 +46,34 @@ class TorrentManager
 
 
 	/**
-	 * Creates new torrent item
+	 * Creates new torrent torrent
 	 */
-	public function create($info, $category, $page)
+	public function create($info, Category $category, $page)
 	{
-		$item = new Item();
-		$item->setId($info['id']);
-		$item->setCategory($category);
-		$item->setPage($page);
-		$item->setTitle($info['title']);
-		$item->setSize($info['size']);
-		$item->setUploader($info['uploader']);
-		$item->setLinkMagnet($info['linkMagnet']);
-		$item->setPopularity($info['popularity']);
+		$torrent = new Torrent();
+		$torrent->setId($info['id']);
+		$torrent->setCategory($category);
+		$torrent->setPage($page);
+		$torrent->setTitle($info['title']);
+		$torrent->setSize($info['size']);
+		$torrent->setUploader($info['uploader']);
+		$torrent->setLinkMagnet($info['linkMagnet']);
+		$torrent->setPopularity($info['popularity']);
 
-		$this->em->persist($item);
+        $torrent->setStatus(Torrent::STATUS_NEW);
+        $torrent->setCreatedAt(new \DateTime());
+
+		$this->em->persist($torrent);
+        return $torrent;
 	}
-
 
 	/**
 	 * Set status
 	 */
-	public function setStatus($id, $status)
+	public function setStatus(Torrent $torrent, $status)
 	{
-		$item = $this->find($id);
-		$item->setStatus($status);
+		$torrent->setStatus($status);
 		$this->em->flush();
-
-		$content['category'] = $item->getCategory();
-		if ($item->getCategory() === ITEM::CATEGORY_SERIES_HD || $item->getCategory() === Item::CATEGORY_SERIES_SD) {
-			$content['tab'] = 'series';
-		} elseif ($item->getCategory() === ITEM::CATEGORY_MOVIES_HD || $item->getCategory() === ITEM::CATEGORY_MOVIES_SD) {
-			$content['tab'] = 'movies';
-		} elseif ($item->getCategory() === ITEM::CATEGORY_GAMES_PC) {
-			$content['tab'] = 'games';
-		} elseif ($item->getCategory() === ITEM::CATEGORY_APPS_WIN) {
-			$content['tab'] = 'windows';
-		} elseif ($item->getCategory() === ITEM::CATEGORY_MUSIC) {
-			$content['tab'] = 'music';
-		} elseif ($item->getCategory() === ITEM::CATEGORY_AUDIOBOOKS) {
-			$content['tab'] = 'audiobooks';
-		} elseif ($item->getCategory() === ITEM::CATEGORY_OTHER) {
-			$content['tab'] = 'other';
-		} else {
-			throw new \Exception('unknown category');
-		}
-
-		return $content;
 	}
 
 
@@ -102,9 +85,9 @@ class TorrentManager
      * Find By Category
      * @return Torrent[]
      */
-    public function findByCategory(Category $category)
+    public function findByCategoryAndPage(Category $category, $page)
     {
-        return $this->repo->findByCategory($categoryCode);
+        return $this->repo->findByCategoryAndPage($category, $page);
     }
 
 	public function findUpdateLast($category, $page)
@@ -117,8 +100,8 @@ class TorrentManager
 		return $this->repo->findCategoryPagePopularity($category, $page);
 	}
 
-	public function find($itemId)
+	public function find($torrentId)
 	{
-		return $this->repo->find($itemId);
+		return $this->repo->find($torrentId);
 	}
 }

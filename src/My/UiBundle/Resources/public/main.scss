@@ -1,0 +1,20 @@
+@charset "UTF-8";
+@import "Compass";
+
+dl {
+	float: left;
+	box-sizing: border-box;
+	width: 32%;
+	margin: 0.4em 1% 0 0;
+	&:nth-child(3n+2) {
+		clear: both;
+	}
+
+	dt {
+		font-size: 0.8em;
+	}
+	dd {
+		font-size: 0.8em;
+	}
+}
+

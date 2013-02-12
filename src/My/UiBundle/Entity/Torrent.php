@@ -26,7 +26,6 @@ class Torrent
 	 * @ORM\Column(type="smallint")
 	 */
 	protected $status;
-	const STATUS_BAD		= -2;
 	const STATUS_UNWANTED	= -1;
 	const STATUS_NEW		= 0;
 	const STATUS_DOWNLOAD	= 1;
@@ -85,14 +84,14 @@ class Torrent
     public function setId($id)
     {
         $this->id = $id;
-    
+
         return $this;
     }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -108,14 +107,14 @@ class Torrent
     public function setStatus($status)
     {
         $this->status = $status;
-    
+
         return $this;
     }
 
     /**
      * Get status
      *
-     * @return integer 
+     * @return integer
      */
     public function getStatus()
     {
@@ -131,14 +130,14 @@ class Torrent
     public function setPage($page)
     {
         $this->page = $page;
-    
+
         return $this;
     }
 
     /**
      * Get page
      *
-     * @return integer 
+     * @return integer
      */
     public function getPage()
     {
@@ -154,14 +153,14 @@ class Torrent
     public function setTitle($title)
     {
         $this->title = $title;
-    
+
         return $this;
     }
 
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -177,14 +176,14 @@ class Torrent
     public function setSize($size)
     {
         $this->size = $size;
-    
+
         return $this;
     }
 
     /**
      * Get size
      *
-     * @return string 
+     * @return string
      */
     public function getSize()
     {
@@ -200,14 +199,14 @@ class Torrent
     public function setUploader($uploader)
     {
         $this->uploader = $uploader;
-    
+
         return $this;
     }
 
     /**
      * Get uploader
      *
-     * @return string 
+     * @return string
      */
     public function getUploader()
     {
@@ -223,14 +222,14 @@ class Torrent
     public function setLinkMagnet($linkMagnet)
     {
         $this->linkMagnet = $linkMagnet;
-    
+
         return $this;
     }
 
     /**
      * Get linkMagnet
      *
-     * @return string 
+     * @return string
      */
     public function getLinkMagnet()
     {
@@ -246,14 +245,14 @@ class Torrent
     public function setPopularity($popularity)
     {
         $this->popularity = $popularity;
-    
+
         return $this;
     }
 
     /**
      * Get popularity
      *
-     * @return integer 
+     * @return integer
      */
     public function getPopularity()
     {
@@ -269,14 +268,14 @@ class Torrent
     public function setCreatedAt($createdAt)
     {
         $this->created_at = $createdAt;
-    
+
         return $this;
     }
 
     /**
      * Get created_at
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -292,14 +291,14 @@ class Torrent
     public function setUpdatedAt($updatedAt)
     {
         $this->updated_at = $updatedAt;
-    
+
         return $this;
     }
 
     /**
      * Get updated_at
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -315,14 +314,14 @@ class Torrent
     public function setCategory(\My\UiBundle\Entity\Category $category = null)
     {
         $this->category = $category;
-    
+
         return $this;
     }
 
     /**
      * Get category
      *
-     * @return \My\UiBundle\Entity\Category 
+     * @return \My\UiBundle\Entity\Category
      */
     public function getCategory()
     {

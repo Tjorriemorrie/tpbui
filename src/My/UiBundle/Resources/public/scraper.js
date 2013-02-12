@@ -1,16 +1,29 @@
 ;(function($, Scraper, undefined) {
     var category = $('#category').data('category');
     var page = 1;
+
     Scraper.init = function() {
-        scrape();
+        Scraper.scrape();
     };
 
-    var scrape = function() {
+    Scraper.scrape = function() {
+        var elPage = $('*[data-page="' + page + '"]');
+        if (!elPage.length) {
+            return alert('finished');
+        }
+
+        elPage.children('*').css({opacity:0.33});
         $.getJSON(App.baseurl + '/scrape/' + category + '/' + page)
+            .complete(function() {
+                //elPage.children('*').css({opacity:0.33});
+            })
             .success(function(response) {
-                $('#' + response.tab).html(response.html);
+                console.log(response);
+                elPage.replaceWith(response.html);
                 page++;
-                scrape();
+                Scraper.scrape();
             });
     };
 }(jQuery, window.Scraper = window.Scraper || {}));
+
+Scraper.init();

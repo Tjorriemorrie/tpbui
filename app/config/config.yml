@@ -21,8 +21,6 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
-    globals:
-        pages: 15
 
 # Assetic Configuration
 assetic:
@@ -81,14 +79,3 @@ services:
   session.storage.pdo:
     class:		Symfony\Component\HttpFoundation\SessionStorage\PdoSessionStorage
     arguments:	[@pdo, %session.storage.options%, %pdo.db_options%]
-
-  search:
-    class:       %search.class%
-  scraper:
-    class:       %scraper.class%
-  listener.search:
-    class:       My\UiBundle\Listener\SearchListener
-    tags:
-      - { name: doctrine.event_listener, event: postPersist }
-      - { name: doctrine.event_listener, event: postRemove }
-      - { name: doctrine.event_listener, event: postUpdate }
