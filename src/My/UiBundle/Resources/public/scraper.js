@@ -9,7 +9,7 @@
     Scraper.scrape = function() {
         var elPage = $('*[data-page="' + page + '"]');
         if (!elPage.length) {
-            return alert('finished');
+            return;
         }
 
         elPage.children('*').css({opacity:0.33});

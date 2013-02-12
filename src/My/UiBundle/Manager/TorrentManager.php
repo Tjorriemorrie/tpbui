@@ -72,7 +72,11 @@ class TorrentManager
 	 */
 	public function setStatus(Torrent $torrent, $status)
 	{
-		$torrent->setStatus($status);
+        if ($torrent->getStatus() === $status) {
+            $torrent->setStatus(Torrent::STATUS_NEW);
+        } else {
+		    $torrent->setStatus($status);
+        }
 		$this->em->flush();
 	}
 

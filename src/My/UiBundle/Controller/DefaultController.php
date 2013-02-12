@@ -22,6 +22,9 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
+        $session = $this->get('session');
+        $nav = $session->set('nav', 0);
+
         /** @var $categoryMan CategoryManager */
         $categoryMan = $this->get('manager.category');
         $categories = $categoryMan->findAll();
@@ -37,6 +40,7 @@ class DefaultController extends Controller
     {
         $session = $this->get('session');
         $nav = $session->get('nav');
+
 
         /** @var $categoryMan CategoryManager */
         $categoryMan = $this->get('manager.category');
