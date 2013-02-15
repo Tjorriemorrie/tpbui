@@ -18,7 +18,7 @@
                 //elPage.children('*').css({opacity:0.33});
             })
             .success(function(response) {
-                console.log(response);
+                //console.log(response);
                 elPage.replaceWith(response.html);
                 page++;
                 Scraper.scrape();

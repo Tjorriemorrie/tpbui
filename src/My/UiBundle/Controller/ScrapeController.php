@@ -27,7 +27,7 @@ class ScrapeController extends Controller
             $torrentMan = $this->get('manager.torrent');
             $torrents = $torrentMan->findByCategoryAndPage($category, $page);
 
-            if (!$torrents or $torrents[0]->getUpdatedAt() < new \DateTime('-8 hour')) {
+            if (count($torrents) !== 30 or $torrents[29]->getUpdatedAt() < new \DateTime('-8 hour')) {
 
                 /** @var Scraper $scraper */
                 $scraper = $this->get('utility.scraper');

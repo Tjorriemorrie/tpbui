@@ -3,11 +3,21 @@
 {% block content %}
     {% render url('navigation', {id: category.id}) %}
 
-    <section id="category" data-category="{{ category.id }}">
-        {% for i in range(1, category.pages) %}
-            {% render url('category_page', {category: category.id, page: i}) %}
-        {% endfor %}
-    </section>
+    <div class="row-fluid">
+        <div class="span9">
+            <section id="category" data-category="{{ category.id }}">
+                {% for i in range(1, category.pages) %}
+                    {% render url('category_page', {category: category.id, page: i}) %}
+                {% endfor %}
+            </section>
+        </div>
+        <div id="latest-anchor" class="span3">
+            <fieldset>
+                <legend>Latest</legend>
+                <div id="latest"></div>
+            </fieldset>
+        </div>
+    </div>
 {% endblock %}
 
 {% block title %}{{ category.name }} | {{ parent() }}{% endblock %}
@@ -17,4 +27,5 @@
     <script type="text/javascript" src="{{ asset('bundles/myui/app.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/myui/torrent.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/myui/scraper.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/myui/latest.js') }}"></script>
 {% endblock %}
