@@ -3,39 +3,30 @@
 namespace My\UiBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use My\UiBundle\Entity\Torrent;
 
 /**
- * @ORM\Entity(repositoryClass="My\UiBundle\Repository\CategoryRepository")
+ * @ORM\Entity(repositoryClass="My\UiBundle\Repository\UploaderRepository")
  * @ORM\Table
  */
-class Category
+class Uploader
 {
 	/**
-	 * @ORM\Column(type="integer")
+	 * @ORM\Column(type="bigint")
 	 * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
 	 */
 	protected $id;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Torrent", mappedBy="category")
-     */
-    protected $torrents;
-
 	/**
-	 * @ORM\Column(type="integer", unique=true)
-	 */
-	protected $code;
-
-	/**
-     * @ORM\Column(type="string", length=250)
+     * @ORM\OneToMany(targetEntity="Torrent", mappedBy="uploader", fetch="EXTRA_LAZY")
      */
-	protected $name;
+	protected $torrents;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=255)
      */
-    protected $pages;
+    protected $name;
 
 	/**
 	 * @ORM\Column(type="datetime")
@@ -51,17 +42,71 @@ class Category
 	////////////////////////////////////////////////////////////////////
 
     /**
+     * Count wanted torrents
+     */
+    public function countWanted()
+    {
+        $count = 0;
+        foreach ($this->getTorrents() as $torrent) {
+            if ($torrent->isStatus(Torrent::STATUS_DOWNLOAD)) {
+                $count++;
+            }
+        }
+        return $count;
+    }
+
+    /**
+     * Count wanted torrents
+     */
+    public function countUnwanted()
+    {
+        $count = 0;
+        foreach ($this->getTorrents() as $torrent) {
+            if ($torrent->isStatus(Torrent::STATUS_UNWANTED)) {
+                $count++;
+            }
+        }
+        return $count;
+    }
+
+	////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////
+
+    /**
+     * To string
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string)$this->getName();
+    }
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->torrents = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
+
+    /**
+     * Set id
+     *
+     * @param integer $id
+     * @return Uploader
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -69,91 +114,22 @@ class Category
     }
 
     /**
-     * Set code
-     *
-     * @param integer $code
-     * @return Category
-     */
-    public function setCode($code)
-    {
-        $this->code = $code;
-    
-        return $this;
-    }
-
-    /**
-     * Get code
-     *
-     * @return integer 
-     */
-    public function getCode()
-    {
-        return $this->code;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return Category
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set pages
-     *
-     * @param integer $pages
-     * @return Category
-     */
-    public function setPages($pages)
-    {
-        $this->pages = $pages;
-    
-        return $this;
-    }
-
-    /**
-     * Get pages
-     *
-     * @return integer 
-     */
-    public function getPages()
-    {
-        return $this->pages;
-    }
-
-    /**
      * Set created_at
      *
      * @param \DateTime $createdAt
-     * @return Category
+     * @return Uploader
      */
     public function setCreatedAt($createdAt)
     {
         $this->created_at = $createdAt;
-    
+
         return $this;
     }
 
     /**
      * Get created_at
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -164,19 +140,19 @@ class Category
      * Set updated_at
      *
      * @param \DateTime $updatedAt
-     * @return Category
+     * @return Uploader
      */
     public function setUpdatedAt($updatedAt)
     {
         $this->updated_at = $updatedAt;
-    
+
         return $this;
     }
 
     /**
      * Get updated_at
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -187,12 +163,12 @@ class Category
      * Add torrents
      *
      * @param \My\UiBundle\Entity\Torrent $torrents
-     * @return Category
+     * @return Uploader
      */
     public function addTorrent(\My\UiBundle\Entity\Torrent $torrents)
     {
         $this->torrents[] = $torrents;
-    
+
         return $this;
     }
 
@@ -209,10 +185,33 @@ class Category
     /**
      * Get torrents
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return Torrent[]
      */
     public function getTorrents()
     {
         return $this->torrents;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Uploader
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 }

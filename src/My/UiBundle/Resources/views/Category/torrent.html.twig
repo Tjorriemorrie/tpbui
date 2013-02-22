@@ -1,9 +1,7 @@
 <dl class="torrent {{ torrent.status == -1 ? 'alert-danger' : '' }} {{ torrent.status == 1 ? 'alert-success' : '' }}" data-torrent-id="{{ torrent.id }}">
-	<dt>
-		<em>{{ torrent.uploader }} ~</em>
-		{{ torrent.title }}
-	</dt>
+	<dt>{{ torrent.title }}</dt>
 	<dd>
+        <strong>[{{ torrent.uploader }}]</strong> {{ torrent.uploader.torrents.count }}-{{ torrent.uploader.countUnwanted }}-{{ torrent.uploader.countWanted }}
 		<a href="{{ torrent.linkMagnet }}"><i class="icon-download"></i></a>
 		<a style="cursor:pointer;"><i class="icon-remove"></i></a>
 		{{ torrent.size }}

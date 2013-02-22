@@ -4,6 +4,7 @@ namespace My\UiBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
 use My\UiBundle\Repository\TorrentRepository;
+use My\UiBundle\Manager\UploaderManager;
 use My\UiBundle\Entity\Torrent;
 use My\UiBundle\Entity\Category;
 
@@ -12,14 +13,16 @@ class TorrentManager
     protected $em;
     /** @var TorrentRepository */
 	protected $repo;
+    protected $uploadMan;
 
     /**
      * Construct
      */
-    public function __construct(EntityManager $em)
+    public function __construct(EntityManager $em, UploaderManager $uploadMan)
     {
         $this->em = $em;
         $this->repo = $em->getRepository('MyUiBundle:Torrent');
+        $this->uploadMan = $uploadMan;
     }
 
 	/**
@@ -56,12 +59,14 @@ class TorrentManager
 		$torrent->setPage($page);
 		$torrent->setTitle($info['title']);
 		$torrent->setSize($info['size']);
-		$torrent->setUploader($info['uploader']);
 		$torrent->setLinkMagnet($info['linkMagnet']);
 		$torrent->setPopularity($info['popularity']);
 
         $torrent->setStatus(Torrent::STATUS_NEW);
         $torrent->setCreatedAt(new \DateTime());
+
+        $uploader = $this->uploadMan->obtainUploader($info['uploader']);
+		$torrent->setUploader($uploader);
 
 		$this->em->persist($torrent);
         return $torrent;

@@ -22,7 +22,12 @@ class Torrent
      */
 	protected $category;
 
-	/**
+    /**
+     * @ORM\ManyToOne(targetEntity="Uploader", inversedBy="torrents")
+     */
+    protected $uploader;
+
+    /**
 	 * @ORM\Column(type="smallint")
 	 */
 	protected $status;
@@ -46,11 +51,6 @@ class Torrent
     protected $size;
 
 	/**
-	 * @ORM\Column(type="string", length=255)
-	 */
-	protected $uploader;
-
-	/**
 	 * @ORM\Column(type="text")
 	 */
     protected $linkMagnet;
@@ -70,6 +70,18 @@ class Torrent
 	 * @ORM\Column(type="datetime", nullable=true)
 	 */
 	protected $updated_at;
+
+	////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////
+
+    /**
+     * is status
+     * @return bool
+     */
+    public function isStatus($status)
+    {
+        return $this->getStatus() === (int)$status;
+    }
 
 	////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////

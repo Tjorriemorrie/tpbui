@@ -22,7 +22,12 @@ class Torrent
      */
 	protected $category;
 
-	/**
+    /**
+     * @ORM\ManyToOne(targetEntity="Uploader", inversedBy="torrents")
+     */
+    protected $uploader;
+
+    /**
 	 * @ORM\Column(type="smallint")
 	 */
 	protected $status;
@@ -44,11 +49,6 @@ class Torrent
     * @ORM\Column(type="string", length=25)
     */
     protected $size;
-
-	/**
-	 * @ORM\Column(type="string", length=255)
-	 */
-	protected $uploader;
 
 	/**
 	 * @ORM\Column(type="text")

@@ -2,97 +2,70 @@
 
 namespace My\UiBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="My\UiBundle\Repository\UploaderRepository")
- * @ORM\Table(name="uploaders")
- * @ORM\HasLifecycleCallbacks
+ * @ORM\Table
  */
 class Uploader
 {
 	/**
-	 * @ORM\Id @ORM\GeneratedValue(strategy="IDENTITY")
-	 * @ORM\Column(type="integer")
+	 * @ORM\Column(type="bigint")
+	 * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
 	 */
-	private $id;
+	protected $id;
 
-	/** @ORM\Column(type="string", length=250) */
-	private $name;
+	/**
+     * @ORM\OneToMany(targetEntity="Torrent", mappedBy="uploader", fetch="EXTRA_LAZY")
+     */
+	protected $torrents;
 
-	/** @ORM\OneToMany(targetEntity="Torrent", mappedBy="uploader") */
-	private $torrents;
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    protected $name;
 
-	/** @ORM\Column(type="datetime") */
-	private $createdAt;
+	/**
+	 * @ORM\Column(type="datetime")
+	 */
+	protected $created_at;
 
-	/** @ORM\Column(type="datetime", nullable=true) */
-	private $modifiedAt;
-
-	////////////////////////////////////////////////////////////////////
-	////////////////////////////////////////////////////////////////////
-
-	/** Construct */
-	public function __construct()
-	{
-		$this->createdAt = new \DateTime();
-		$this->torrents = new \Doctrine\Common\Collections\ArrayCollection();
-	}
-
-	/** @ORM\PreUpdate */
-	public function preUpdate()
-	{
-		$this->setModifiedAt(new \DateTime());
-	}
-	
-	/** Get Stats */
-	public function getStatsUploaded($categoryId)
-	{
-		if (!$this->getTorrents()->count()) return null;
-		
-		$avg = array();
-		foreach ($this->getTorrents() as $torrent) {
-			if ($torrent->getCategory()->getId() != $categoryId) continue;
-			$avg[] = $torrent->getPopularity();
-		}
-		
-		if (!count($avg)) return null;
-		return (array_sum($avg) / count($avg));
-	}
-	
-	/** Get Stats Compared */
-	public function getStatsUploadedCompared($avgStats, $categoryId)
-	{
-		$uploadedStats = $this->getStatsUploaded($categoryId);
-		if (empty($avgStats) || is_null($uploadedStats)) return '-';
-		return round($uploadedStats / $avgStats * 100) . '%'; 
-	}
-	
-	public function getStatsDownloaded($categoryId)
-	{
-		if (!$this->getTorrents()->count()) return null;
-		
-		$countAll = $countDownloaded = 0;
-		foreach ($this->getTorrents() as $torrent) {
-			if ($torrent->getCategory()->getId() != $categoryId) continue;
-			$countAll++;
-			if (in_array($torrent->getStatus(), array(3, 5))) $countDownloaded++;
-		}
-		
-		if ($countAll == 0) return '-';
-		return round($countDownloaded / $countAll * 100) . '%';
-	}
-	
+	/**
+	 * @ORM\Column(type="datetime", nullable=true)
+	 */
+	protected $updated_at;
 
 	////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////
 
 
     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->torrents = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set id
+     *
+     * @param integer $id
+     * @return Uploader
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -100,92 +73,81 @@ class Uploader
     }
 
     /**
-     * Set name
+     * Set created_at
      *
-     * @param string $name
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set createdAt
-     *
-     * @param datetime $createdAt
+     * @param \DateTime $createdAt
+     * @return Uploader
      */
     public function setCreatedAt($createdAt)
     {
-        $this->createdAt = $createdAt;
+        $this->created_at = $createdAt;
+
+        return $this;
     }
 
     /**
-     * Get createdAt
+     * Get created_at
      *
-     * @return datetime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
-        return $this->createdAt;
+        return $this->created_at;
     }
 
     /**
-     * Set modifiedAt
+     * Set updated_at
      *
-     * @param datetime $modifiedAt
+     * @param \DateTime $updatedAt
+     * @return Uploader
      */
-    public function setModifiedAt($modifiedAt)
+    public function setUpdatedAt($updatedAt)
     {
-        $this->modifiedAt = $modifiedAt;
+        $this->updated_at = $updatedAt;
+
+        return $this;
     }
 
     /**
-     * Get modifiedAt
+     * Get updated_at
      *
-     * @return datetime 
+     * @return \DateTime
      */
-    public function getModifiedAt()
+    public function getUpdatedAt()
     {
-        return $this->modifiedAt;
+        return $this->updated_at;
     }
 
     /**
      * Add torrents
      *
-     * @param My\UiBundle\Entity\Torrent $torrents
+     * @param \My\UiBundle\Entity\Torrent $torrents
+     * @return Uploader
      */
-    public function addTorrents(\My\UiBundle\Entity\Torrent $torrents)
+    public function addTorrent(\My\UiBundle\Entity\Torrent $torrents)
     {
         $this->torrents[] = $torrents;
+
+        return $this;
+    }
+
+    /**
+     * Remove torrents
+     *
+     * @param \My\UiBundle\Entity\Torrent $torrents
+     */
+    public function removeTorrent(\My\UiBundle\Entity\Torrent $torrents)
+    {
+        $this->torrents->removeElement($torrents);
     }
 
     /**
      * Get torrents
      *
-     * @return Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getTorrents()
     {
         return $this->torrents;
-    }
-
-    /**
-     * Add torrents
-     *
-     * @param My\UiBundle\Entity\Torrent $torrents
-     */
-    public function addTorrent(\My\UiBundle\Entity\Torrent $torrents)
-    {
-        $this->torrents[] = $torrents;
     }
 }
