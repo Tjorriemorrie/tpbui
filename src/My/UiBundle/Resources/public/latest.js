@@ -10,7 +10,7 @@
     Latest.update = function(event) {
         $('#latest').html('<ol class="list"></ol>');
         $('.torrent.alert-success').each(function(i) {
-            $('#latest ol').append('<li>' + $(this).children('dt').text().replace(/.*~/, '') + '</li>');
+            $('#latest ol').append('<li>' + $(this).children('dt').text() + '</li>');
         });
     };
 
