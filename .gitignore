@@ -16,3 +16,6 @@ app/config/parameters.ini
 
 # sass
 .sass-cache
+
+# code coverage
+app/coverage
