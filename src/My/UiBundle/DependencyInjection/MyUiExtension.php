@@ -24,5 +24,8 @@ class MyUiExtension extends Extension
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
+
+	    //die(var_dump($config));
+	    $container->setParameter('time_limit', $config['time_limit']);
     }
 }

@@ -5,6 +5,8 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
+	    <parameter key="time_limit" />
+
         <parameter key="class.utility.scraper">My\UiBundle\Utility\Scraper</parameter>
         <parameter key="class.manager.category">My\UiBundle\Manager\CategoryManager</parameter>
         <parameter key="class.manager.uploader">My\UiBundle\Manager\UploaderManager</parameter>
