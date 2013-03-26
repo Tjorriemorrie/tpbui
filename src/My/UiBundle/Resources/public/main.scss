@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@import "Compass";
 
 dl {
 	float: left;
@@ -9,6 +8,10 @@ dl {
 	&:nth-child(3n+2) {
 		clear: both;
 	}
+    border: 1px solid #fff;
+    &:hover {
+        border: 1px solid #999;
+    }
 
 	dt {
 		font-size: 0.8em;

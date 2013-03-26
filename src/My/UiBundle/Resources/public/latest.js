@@ -2,6 +2,8 @@
 
     Latest.init = function() {
         $('body').on('click', '.icon-download, .icon-remove', Latest.update);
+        $('body').on('mouseover', '.torrent', Latest.highlight);
+
         $(window).scroll(Latest.keepTop);
         Latest.update();
         Latest.keepTop();
@@ -31,6 +33,28 @@
                 });
             }
         }
+    };
+
+    Latest.highlight = function(event) {
+        var el = $(event.currentTarget);
+        var torrentName = el.find('dt').text();
+
+        console.log(torrentName);
+        $('.list li').each(function(index, value) {
+            var listName = $(value).text();
+            //console.log(listName);
+            var score = 0;
+            for (var i=0; i<=torrentName.length; i++) {
+                var letter = torrentName[i] + torrentName[i+1];
+                //console.log(letter);
+                if (listName.indexOf(letter) !== -1) {
+                    score++;
+                }
+            }
+            var perc = score / torrentName.length;
+            //console.log(index + ' scored ' + score / torrentName.length);
+            $(value).css({opacity:perc});
+        });
     };
 
 }(jQuery, window.Latest = window.Latest || {}));
