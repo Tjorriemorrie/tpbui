@@ -27,6 +27,7 @@ class DefaultController extends Controller
 
         /** @var $categoryMan CategoryManager */
         $categoryMan = $this->get('manager.category');
+        $categoryMan->loadCategories();
         $categories = $categoryMan->findAll();
 
         return array('categories' => $categories);

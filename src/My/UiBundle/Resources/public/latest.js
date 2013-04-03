@@ -39,21 +39,26 @@
         var el = $(event.currentTarget);
         var torrentName = el.find('dt').text();
 
-        console.log(torrentName);
+        //console.log(torrentName);
         $('.list li').each(function(index, value) {
             var listName = $(value).text();
             //console.log(listName);
             var score = 0;
             for (var i=0; i<=torrentName.length; i++) {
-                var letter = torrentName[i] + torrentName[i+1];
+                var letterTwo = torrentName[i] + torrentName[i+1];
+                var letterThree = torrentName[i] + torrentName[i+1] + torrentName[i+2];
                 //console.log(letter);
-                if (listName.indexOf(letter) !== -1) {
-                    score++;
+                if (listName.indexOf(letterTwo) !== -1) {
+                    score += 0.50;
+                }
+                if (listName.indexOf(letterThree) !== -1) {
+                    score += 0.50;
                 }
             }
             var perc = score / torrentName.length;
             //console.log(index + ' scored ' + score / torrentName.length);
-            $(value).css({opacity:perc});
+            var bold = (perc > 0.67) ? 'bold' : 'normal';
+            $(value).css({opacity:perc, fontWeight:bold});
         });
     };
 

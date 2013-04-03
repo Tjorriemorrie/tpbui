@@ -7,7 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
-
+use My\UiBundle\Manager\CategoryManager;
 use My\UiBundle\Manager\TorrentManager;
 use My\UiBundle\Entity\Torrent;
 
@@ -25,6 +25,11 @@ class TorrentController extends Controller
             /* @var TorrentManager $torrentMan */
             $torrentMan = $this->get('manager.torrent');
             $torrentMan->setStatus($torrent, Torrent::STATUS_DOWNLOAD);
+
+            /** @var $categoryMan CategoryManager */
+            $categoryMan = $this->get('manager.category');
+            $categoryMan->checkPages($torrent);
+
             $response = new JsonResponse('OK');
         } catch (\Exception $e) {
             $code = $e->getCode() ? $e->getCode : 500;

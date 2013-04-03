@@ -3,6 +3,7 @@
 namespace My\UiBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use My\UiBundle\Entity\Torrent;
 
 /**
  * @ORM\Entity(repositoryClass="My\UiBundle\Repository\UploaderRepository")
@@ -13,7 +14,7 @@ class Uploader
 	/**
 	 * @ORM\Column(type="bigint")
 	 * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\GeneratedValue(strategy="AUTO")
 	 */
 	protected $id;
 
@@ -40,6 +41,45 @@ class Uploader
 	////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////
 
+    /**
+     * Count wanted torrents
+     */
+    public function countWanted()
+    {
+        $count = 0;
+        foreach ($this->getTorrents() as $torrent) {
+            if ($torrent->isStatus(Torrent::STATUS_DOWNLOAD)) {
+                $count++;
+            }
+        }
+        return $count;
+    }
+
+    /**
+     * Count wanted torrents
+     */
+    public function countUnwanted()
+    {
+        $count = 0;
+        foreach ($this->getTorrents() as $torrent) {
+            if ($torrent->isStatus(Torrent::STATUS_UNWANTED)) {
+                $count++;
+            }
+        }
+        return $count;
+    }
+
+	////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////
+
+    /**
+     * To string
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string)$this->getName();
+    }
 
     /**
      * Constructor
@@ -48,6 +88,7 @@ class Uploader
     {
         $this->torrents = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
 
     /**
      * Set id
@@ -144,10 +185,33 @@ class Uploader
     /**
      * Get torrents
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return Torrent[]
      */
     public function getTorrents()
     {
         return $this->torrents;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Uploader
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 }

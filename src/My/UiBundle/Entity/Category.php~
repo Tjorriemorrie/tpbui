@@ -22,6 +22,17 @@ class Category
      */
     protected $torrents;
 
+    /**
+     * @ORM\Column(type="integer", unique=true)
+     */
+    protected $section;
+    const SECTION_AUDIO = 100;
+    const SECTION_VIDEO = 200;
+    const SECTION_APPLICATION = 300;
+    const SECTION_GAMES = 400;
+    const SECTION_PORN = 500;
+    const SECTION_OTHER = 600;
+
 	/**
 	 * @ORM\Column(type="integer", unique=true)
 	 */
@@ -57,11 +68,11 @@ class Category
     {
         $this->torrents = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -77,14 +88,14 @@ class Category
     public function setCode($code)
     {
         $this->code = $code;
-    
+
         return $this;
     }
 
     /**
      * Get code
      *
-     * @return integer 
+     * @return integer
      */
     public function getCode()
     {
@@ -100,14 +111,14 @@ class Category
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -123,14 +134,14 @@ class Category
     public function setPages($pages)
     {
         $this->pages = $pages;
-    
+
         return $this;
     }
 
     /**
      * Get pages
      *
-     * @return integer 
+     * @return integer
      */
     public function getPages()
     {
@@ -146,14 +157,14 @@ class Category
     public function setCreatedAt($createdAt)
     {
         $this->created_at = $createdAt;
-    
+
         return $this;
     }
 
     /**
      * Get created_at
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -169,14 +180,14 @@ class Category
     public function setUpdatedAt($updatedAt)
     {
         $this->updated_at = $updatedAt;
-    
+
         return $this;
     }
 
     /**
      * Get updated_at
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -192,7 +203,7 @@ class Category
     public function addTorrent(\My\UiBundle\Entity\Torrent $torrents)
     {
         $this->torrents[] = $torrents;
-    
+
         return $this;
     }
 
@@ -209,7 +220,7 @@ class Category
     /**
      * Get torrents
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getTorrents()
     {
