@@ -28,6 +28,10 @@ class CategoryController extends Controller
         $session = $this->get('session');
         $session->set('nav', $category->getId());
 
+        /** @var CategoryManager $categoryMan */
+        $categoryMan = $this->get('manager.category');
+        $date = $categoryMan->setViewed($category);
+
         //die(var_dump($category));
         return array('category' => $category);
     }

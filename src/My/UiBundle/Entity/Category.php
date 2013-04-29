@@ -48,6 +48,11 @@ class Category
      */
     protected $pages;
 
+    /**
+     * @ORM\Column(name="last_viewed_at", type="datetime", nullable=true)
+     */
+    protected $lastViewedAt;
+
 	/**
 	 * @ORM\Column(type="datetime")
 	 */
@@ -248,5 +253,28 @@ class Category
     public function getSection()
     {
         return $this->section;
+    }
+
+    /**
+     * Set lastViewedAt
+     *
+     * @param \DateTime $lastViewedAt
+     * @return Category
+     */
+    public function setLastViewedAt($lastViewedAt)
+    {
+        $this->lastViewedAt = $lastViewedAt;
+    
+        return $this;
+    }
+
+    /**
+     * Get lastViewedAt
+     *
+     * @return \DateTime 
+     */
+    public function getLastViewedAt()
+    {
+        return $this->lastViewedAt;
     }
 }

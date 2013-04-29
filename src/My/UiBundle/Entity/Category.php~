@@ -23,7 +23,7 @@ class Category
     protected $torrents;
 
     /**
-     * @ORM\Column(type="integer", unique=true)
+     * @ORM\Column(type="integer")
      */
     protected $section;
     const SECTION_AUDIO = 100;
@@ -47,6 +47,11 @@ class Category
      * @ORM\Column(type="integer")
      */
     protected $pages;
+
+    /**
+     * @ORM\Column(name="last_viewed_at", type="datetime", nullable=true)
+     */
+    protected $lastViewedAt;
 
 	/**
 	 * @ORM\Column(type="datetime")
@@ -225,5 +230,28 @@ class Category
     public function getTorrents()
     {
         return $this->torrents;
+    }
+
+    /**
+     * Set section
+     *
+     * @param integer $section
+     * @return Category
+     */
+    public function setSection($section)
+    {
+        $this->section = $section;
+
+        return $this;
+    }
+
+    /**
+     * Get section
+     *
+     * @return integer
+     */
+    public function getSection()
+    {
+        return $this->section;
     }
 }

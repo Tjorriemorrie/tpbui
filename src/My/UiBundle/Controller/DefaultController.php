@@ -28,9 +28,8 @@ class DefaultController extends Controller
         /** @var $categoryMan CategoryManager */
         $categoryMan = $this->get('manager.category');
         $categoryMan->loadCategories();
-        $categories = $categoryMan->findAll();
 
-        return array('categories' => $categories);
+        return array();
     }
 
     /**
@@ -42,13 +41,23 @@ class DefaultController extends Controller
         $session = $this->get('session');
         $nav = $session->get('nav');
 
-
         /** @var $categoryMan CategoryManager */
         $categoryMan = $this->get('manager.category');
-        $categories = $categoryMan->findAll();
+
+        $last = $categoryMan->findLastViewed();
+
+        $categoryAudio = $categoryMan->findBySection(Category::SECTION_AUDIO);
+        $categoryVideo = $categoryMan->findBySection(Category::SECTION_VIDEO);
+        $categoryApps = $categoryMan->findBySection(Category::SECTION_APPLICATION);
+        $categoryGames = $categoryMan->findBySection(Category::SECTION_GAMES);
+        $categoryPorn = $categoryMan->findBySection(Category::SECTION_PORN);
+        $categoryOther = $categoryMan->findBySection(Category::SECTION_OTHER);
 
         //die(var_dump($id));
 
-        return array('selected' => $nav, 'categories' => $categories);
+        return array('selected' => $nav, 'last' => $last,
+                     'categoryAudio' => $categoryAudio, 'categoryVideo' => $categoryVideo,
+                    'categoryApps' => $categoryApps, 'categoryGames' => $categoryGames,
+                    'categoryPorn' => $categoryPorn, 'categoryOther' => $categoryOther);
     }
 }

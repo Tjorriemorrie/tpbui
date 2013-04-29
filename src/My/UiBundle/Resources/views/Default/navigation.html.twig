@@ -1,10 +1,70 @@
 <div class="navbar">
     <div class="navbar-inner">
         <a class="brand" href="{{ path('home') }}">TPB UI</a>
-        <ul class="nav">
-            {% for category in categories %}
-                <li class="{{ selected == category.id ? 'active' : '' }}"><a href="{{ path('category', {id: category.id}) }}">{{ category.name }}</a></li>
-            {% endfor %}
-        </ul>
+        <div class="btn-group">
+            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Browse <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+
+                <li class="dropdown-submenu">
+                    <a tabindex="-1" href="#audio"><span class="muted">100</span> Audio</a>
+                    <ul class="dropdown-menu">
+                        {% for category in categoryAudio %}
+                            <li class="{{ selected == category.id ? 'active' : '' }}"><a href="{{ path('category', {id: category.id}) }}"><span class="muted">{{ category.code }}</span> {{ category.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+
+                <li class="dropdown-submenu">
+                    <a tabindex="-1" href="#audio"><span class="muted">200</span> Video</a>
+                    <ul class="dropdown-menu">
+                        {% for category in categoryVideo %}
+                            <li class="{{ selected == category.id ? 'active' : '' }}"><a href="{{ path('category', {id: category.id}) }}"><span class="muted">{{ category.code }}</span> {{ category.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+
+                <li class="dropdown-submenu">
+                    <a tabindex="-1" href="#audio"><span class="muted">300</span> Apps</a>
+                    <ul class="dropdown-menu">
+                        {% for category in categoryApps %}
+                            <li class="{{ selected == category.id ? 'active' : '' }}"><a href="{{ path('category', {id: category.id}) }}"><span class="muted">{{ category.code }}</span> {{ category.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+
+                <li class="dropdown-submenu">
+                    <a tabindex="-1" href="#audio"><span class="muted">400</span> Games</a>
+                    <ul class="dropdown-menu">
+                        {% for category in categoryGames %}
+                            <li class="{{ selected == category.id ? 'active' : '' }}"><a href="{{ path('category', {id: category.id}) }}"><span class="muted">{{ category.code }}</span> {{ category.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+
+                <li class="dropdown-submenu">
+                    <a tabindex="-1" href="#audio"><span class="muted">500</span> Porn</a>
+                    <ul class="dropdown-menu">
+                        {% for category in categoryPorn %}
+                            <li class="{{ selected == category.id ? 'active' : '' }}"><a href="{{ path('category', {id: category.id}) }}"><span class="muted">{{ category.code }}</span> {{ category.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+
+                <li class="dropdown-submenu">
+                    <a tabindex="-1" href="#audio"><span class="muted">600</span> Other</a>
+                    <ul class="dropdown-menu">
+                        {% for category in categoryOther %}
+                            <li class="{{ selected == category.id ? 'active' : '' }}"><a href="{{ path('category', {id: category.id}) }}"><span class="muted">{{ category.code }}</span> {{ category.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        {% for category in last %}
+            <ul class="nav">
+                <li class="{{ selected == category.id ? 'active' : '' }}"><a href="{{ path('category', {id: category.id}) }}"><span class="muted">{{ category.code }}</span> {{ category.name }}</a></li>
+            </ul>
+        {% endfor %}
     </div>
 </div>

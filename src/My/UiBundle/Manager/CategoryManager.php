@@ -7,20 +7,34 @@ use My\UiBundle\Entity\Torrent;
 use My\UiBundle\Repository\CategoryRepository;
 
 use My\UiBundle\Entity\Category;
+use Symfony\Component\Validator\Validator;
 
 class CategoryManager
 {
-    private $em;
+    protected $em;
     /** @var CategoryRepository */
-	private $repo;
+	protected $repo;
+    protected $validator;
 
     /**
      * Construct
      */
-    public function __construct(EntityManager $em)
+    public function __construct(EntityManager $em, Validator $validator)
     {
         $this->em = $em;
         $this->repo = $em->getRepository('MyUiBundle:Category');
+        $this->validator = $validator;
+    }
+
+    /**
+     * Validate
+     */
+    protected function validate(Category $category)
+    {
+        $violations = $this->validator->validate($category);
+        if ($violations->count()) {
+            throw new \Exception((string)$violations);
+        }
     }
 
     /**
@@ -81,6 +95,20 @@ class CategoryManager
         }
     }
 
+    /**
+     * Set viewed
+     * @param Category $category
+     * @return \DateTime
+     */
+    public function setViewed(Category $category)
+    {
+        $date = new \DateTime();
+        $category->setLastViewedAt($date);
+        $this->validate($category);
+        $this->em->flush();
+        return $date;
+    }
+
 	////////////////////////////////////////////////////////
     // REPO
 	////////////////////////////////////////////////////////
@@ -111,5 +139,24 @@ class CategoryManager
     public function findByCode($code)
     {
         return $this->repo->findOneByCode($code);
+    }
+
+    /**
+     * Find by section
+     * @param $section
+     * @return Category[]
+     */
+    public function findBySection($section)
+    {
+        return $this->repo->findBySection($section);
+    }
+
+    /**
+     * Find last viewed
+     * @return Category[]
+     */
+    public function findLastViewed()
+    {
+        return $this->repo->findLastViewed();
     }
 }

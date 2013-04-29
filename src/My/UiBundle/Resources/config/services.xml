@@ -21,6 +21,7 @@
 
         <service id="manager.category" class="%class.manager.category%">
             <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="validator" />
         </service>
 
         <service id="manager.uploader" class="%class.manager.uploader%">
