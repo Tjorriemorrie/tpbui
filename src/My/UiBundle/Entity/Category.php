@@ -26,12 +26,12 @@ class Category
      * @ORM\Column(type="integer")
      */
     protected $section;
-    const SECTION_AUDIO = 100;
-    const SECTION_VIDEO = 200;
-    const SECTION_APPLICATION = 300;
-    const SECTION_GAMES = 400;
-    const SECTION_PORN = 500;
-    const SECTION_OTHER = 600;
+    const SECTION_AUDIO = 1;
+    const SECTION_VIDEO = 2;
+    const SECTION_APPLICATION = 3;
+    const SECTION_GAMES = 4;
+    const SECTION_PORN = 5;
+    const SECTION_OTHER = 6;
 
 	/**
 	 * @ORM\Column(type="integer", unique=true)

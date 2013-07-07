@@ -11,9 +11,6 @@ web/bundles/*
 # Configuration files
 app/config/parameters.ini
 
-# phpstorm
-.idea
-
 # sass
 .sass-cache
 
