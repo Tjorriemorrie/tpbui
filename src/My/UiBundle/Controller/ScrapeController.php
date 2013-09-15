@@ -38,7 +38,6 @@ class ScrapeController extends Controller
 
                 $torrentMan->saveInfos($infos, $category, $page);
                 $torrents = $torrentMan->findByCategoryAndPage($category, $page);
-
             }
 
 			$content['html'] = $this->renderView('MyUiBundle:Category:page.html.twig', array('page' => $page, 'torrents' => $torrents));

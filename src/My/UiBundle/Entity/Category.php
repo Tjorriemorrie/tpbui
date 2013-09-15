@@ -3,6 +3,9 @@
 namespace My\UiBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
+use My\UiBundle\Entity\Torrent;
 
 /**
  * @ORM\Entity(repositoryClass="My\UiBundle\Repository\CategoryRepository")
@@ -26,12 +29,12 @@ class Category
      * @ORM\Column(type="integer")
      */
     protected $section;
-    const SECTION_AUDIO = 1;
-    const SECTION_VIDEO = 2;
-    const SECTION_APPLICATION = 3;
-    const SECTION_GAMES = 4;
-    const SECTION_PORN = 5;
-    const SECTION_OTHER = 6;
+    const SECTION_AUDIO = 100;
+    const SECTION_VIDEO = 200;
+    const SECTION_APPLICATION = 300;
+    const SECTION_GAMES = 400;
+    const SECTION_PORN = 500;
+    const SECTION_OTHER = 600;
 
 	/**
 	 * @ORM\Column(type="integer", unique=true)
@@ -64,6 +67,25 @@ class Category
 	protected $updated_at;
 
 	////////////////////////////////////////////////////////////////////
+    // METHODS
+	////////////////////////////////////////////////////////////////////
+
+    /**
+     * Get torrents old downloaded
+     *
+     * @return Torrent[]
+     */
+    public function getTorrentsOldDownloaded()
+    {
+        $month = new \DateTime('-1 month');
+        $criteria = Criteria::create()
+            ->where(Criteria::expr()->lte('updated_at', $month))
+            ->andWhere(Criteria::expr()->eq('status', Torrent::STATUS_DOWNLOAD));
+        return $this->getTorrents()->matching($criteria);
+    }
+
+	////////////////////////////////////////////////////////////////////
+    // GETTERS AND SETTERS
 	////////////////////////////////////////////////////////////////////
 
     /**

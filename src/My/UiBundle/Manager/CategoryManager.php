@@ -3,11 +3,10 @@
 namespace My\UiBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
-use My\UiBundle\Entity\Torrent;
-use My\UiBundle\Repository\CategoryRepository;
-
-use My\UiBundle\Entity\Category;
 use Symfony\Component\Validator\Validator;
+use My\UiBundle\Repository\CategoryRepository;
+use My\UiBundle\Entity\Category;
+use My\UiBundle\Entity\Torrent;
 
 class CategoryManager
 {
@@ -105,6 +104,14 @@ class CategoryManager
         $date = new \DateTime();
         $category->setLastViewedAt($date);
         $this->validate($category);
+
+        $torrentsOldDownloaded = $category->getTorrentsOldDownloaded();
+        //die(var_dump(count($torrentsOldDownloaded)));
+        foreach ($torrentsOldDownloaded as $torrent) {
+            $torrent->setStatus(Torrent::STATUS_UNWANTED);
+            $torrent->setUpdatedAt(new \DateTime());
+        }
+
         $this->em->flush();
         return $date;
     }

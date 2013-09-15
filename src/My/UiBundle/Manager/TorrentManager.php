@@ -36,7 +36,7 @@ class TorrentManager
 //			die(var_dump($info));
 			$torrent = $this->find($info['id']);
 			if ($torrent) {
-				$torrent->setUpdatedAt(new \DateTime());
+				//$torrent->setUpdatedAt(new \DateTime());
                 $torrent->setPage($page);
                 $torrent->setPopularity($info['popularity']);
 			} else {
@@ -82,6 +82,8 @@ class TorrentManager
         } else {
 		    $torrent->setStatus($status);
         }
+        $torrent->setUpdatedAt(new \DateTime());
+
 		$this->em->flush();
 	}
 
