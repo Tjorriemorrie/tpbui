@@ -73,7 +73,7 @@ class CategoryManager
         $this->em->persist($category);
 
         $category->setCode($code);
-        $category->setSection(floor($code / 100));
+        $category->setSection(floor($code / 100) * 100);
         $category->setName($name);
         $category->setPages(1);
         $category->setCreatedAt(new \DateTime());
