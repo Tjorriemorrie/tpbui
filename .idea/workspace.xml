@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="72b1d16e-4327-4907-9ca3-d35c9e9238c6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="C:\Program Files (x86)\Zend\Apache2\htdocs\tpbui\src\My\UiBundle\Repository\ItemRepository.php" afterPath="C:\Program Files (x86)\Zend\Apache2\htdocs\tpbui\src\My\UiBundle\Repository\ItemRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="tpbui.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="$PROJECT_DIR$/app/cache/dev/appDevDebugProjectContainer.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1367398026799" ignored="false" />
     <file path="$PROJECT_DIR$/../poxa/src/JJ/MainBundle/Entity/UserAlbum.php" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1363453892710" ignored="false" />
     <file path="$PROJECT_DIR$/../poxa/src/JJ/MainBundle/Entity/UserTrack.php" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1363453951460" ignored="false" />
     <file path="$PROJECT_DIR$/../poxa/app/config/config.yml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1363455222984" ignored="false" />
@@ -276,6 +275,100 @@
     <file path="/Dummy.txt" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1375720177590" ignored="false" />
     <file path="/CategoryManager.php" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1385738810941" ignored="false" />
     <file path="/Category.php" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1375805015106" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/improving_design_tutorial.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/books_website.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/experimental_dom_tester.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/photos_stream.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/notes/message.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/browser_documentation.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/boundary_classes_tutorial.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/authentication_documentation.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/form_testing_documentation.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/first_test_tutorial.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/intro.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/about.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/mock_objects_documentation.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/expectation_documentation.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/experimental_recorder.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/display_subclass_tutorial.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/coding_standards.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/fr/reporter_documentation.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/fr/group_test_documentation.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/fr/download_website.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/fr/books_website.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/fr/form_testing_documentation.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/fr/intro.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/fr/logiciels_utilisant_simpletest.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/fr/index.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/fr/authentication_documentation.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/fr/expectation_documentation.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/fr/mock_objects_documentation.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/fr/support_website.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/fr/extension_eclipse.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/fr/mock_objects_tutorial.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/fr/subclass_tutorial.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/fr/gain_control_tutorial.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/fr/first_test_tutorial.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/fr/improving_design_tutorial.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/fr/web_tester_documentation.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/fr/display_subclass_tutorial.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/fr/partial_mocks_documentation.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/fr/group_test_tutorial.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/fr/browser_documentation.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/fr/overview.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/fr/boundary_classes_tutorial.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/fr/unit_test_documentation.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/fr/simple_test.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/build.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/TODO.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/packages/bundled_map.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/packages/site_map.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/packages/phpdoc_docs.xslt" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/packages/lastcraft.xslt" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/packages/extension.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/packages/package.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/packages/bundled_docs.xslt" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/packages/onpk/map_onpk.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212011" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/packages/onpk/onpk.xslt" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/packages/simpletest.org/map.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/packages/simpletest.org/test/package/here_download.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/group_test_documentation.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/packages/simpletest.org/test/package/one_section_with_php_code.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/speakers_coaches_consultancy.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/packages/simpletest.org/test/package/here_support.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/mock_objects_tutorial.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/packages/simpletest.org/test/package/content_without_section.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/reporter_documentation.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/packages/simpletest.org/test/package/one_section_changelogged.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/extension_eclipse.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/packages/simpletest.org/test/package/here_start_testing.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/subclass_tutorial.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/group_test_tutorial.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/experimental_intro.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/packages/simpletest.org/test/package/map.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/ideas.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/packages/simpletest.org/test/package/one_section_milestoned.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/softwares_using_simpletest.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/packages/simpletest.org/test/package/one_section_with_autorum_php.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/screencasts.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/packages/simpletest.org/test/package/here_simpletest.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/support_website.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/download_website.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/packages/simpletest.org/test/package/here_unit-tester.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/changelog.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/packages/simpletest.org/test/package/here_overview.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/gain_control_tutorial.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/packages/simpletest.org/test/package/en/synchronisation.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/simple_test.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/packages/simpletest.org/test/package/fr/no-synchronisation.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/index.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/packages/simpletest.org/test/package/fr/synchronisation.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/unit_test_documentation.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/heartbeat.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/partial_mocks_documentation.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/web_tester_documentation.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/writing_extensions.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
+    <file path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/docs/source/en/overview.xml" changelist="72b1d16e-4327-4907-9ca3-d35c9e9238c6" time="1387440212012" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -326,10 +419,10 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="DefaultController.php" pinned="false" current="false" current-in-tab="true">
+              <file leaf-file-name="DefaultController.php" pinned="false" current="true" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/My/UiBundle/Controller/DefaultController.php">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state line="48" column="69" selection-start="1329" selection-end="1329" vertical-scroll-proportion="0.4282116">
+                    <state line="35" column="0" selection-start="884" selection-end="884" vertical-scroll-proportion="0.9141414">
                       <folding />
                     </state>
                   </provider>
@@ -338,7 +431,7 @@
               <file leaf-file-name="CategoryController.php" pinned="false" current="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/My/UiBundle/Controller/CategoryController.php">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state line="46" column="45" selection-start="1322" selection-end="1322" vertical-scroll-proportion="-13.423077">
+                    <state line="46" column="45" selection-start="1322" selection-end="1322" vertical-scroll-proportion="0.0">
                       <folding />
                     </state>
                   </provider>
@@ -405,7 +498,7 @@
               <file leaf-file-name="navigation.html.twig" pinned="false" current="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/My/UiBundle/Resources/views/Default/navigation.html.twig">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state line="46" column="34" selection-start="2696" selection-end="2696" vertical-scroll-proportion="0.37301588">
+                    <state line="46" column="34" selection-start="2696" selection-end="2696" vertical-scroll-proportion="0.04509284">
                       <folding />
                     </state>
                   </provider>
@@ -455,10 +548,10 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="CategoryManager.php" pinned="false" current="true" current-in-tab="true">
+              <file leaf-file-name="CategoryManager.php" pinned="false" current="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/My/UiBundle/Manager/CategoryManager.php">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state line="75" column="55" selection-start="2434" selection-end="2434" vertical-scroll-proportion="0.5104167">
+                    <state line="78" column="49" selection-start="2552" selection-end="2552" vertical-scroll-proportion="0.044386424">
                       <folding />
                     </state>
                   </provider>
@@ -467,7 +560,7 @@
               <file leaf-file-name="TorrentManager.php" pinned="false" current="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/My/UiBundle/Manager/TorrentManager.php">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state line="38" column="18" selection-start="868" selection-end="868" vertical-scroll-proportion="-0.65384614">
+                    <state line="38" column="18" selection-start="868" selection-end="868" vertical-scroll-proportion="0.0">
                       <folding />
                     </state>
                   </provider>
@@ -513,19 +606,19 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="Category.php" pinned="false" current="false" current-in-tab="true">
+              <file leaf-file-name="Category.php" pinned="false" current="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/My/UiBundle/Entity/Category.php">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state line="31" column="10" selection-start="619" selection-end="619" vertical-scroll-proportion="0.33248082">
+                    <state line="31" column="10" selection-start="619" selection-end="619" vertical-scroll-proportion="0.0">
                       <folding />
                     </state>
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="Scraper.php" pinned="false" current="false" current-in-tab="false">
+              <file leaf-file-name="Scraper.php" pinned="false" current="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/My/UiBundle/Utility/Scraper.php">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state line="14" column="38" selection-start="257" selection-end="257" vertical-scroll-proportion="0.0">
+                    <state line="14" column="38" selection-start="257" selection-end="257" vertical-scroll-proportion="0.043589745">
                       <folding />
                     </state>
                   </provider>
@@ -561,9 +654,9 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/My/UiBundle/Controller/ScrapeController.php" />
         <option value="$PROJECT_DIR$/src/My/UiBundle/Manager/TorrentManager.php" />
-        <option value="$PROJECT_DIR$/src/My/UiBundle/Utility/Scraper.php" />
         <option value="$PROJECT_DIR$/src/My/UiBundle/Entity/Category.php" />
         <option value="$PROJECT_DIR$/src/My/UiBundle/Manager/CategoryManager.php" />
+        <option value="$PROJECT_DIR$/src/My/UiBundle/Utility/Scraper.php" />
       </list>
     </option>
   </component>
@@ -649,6 +742,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -725,105 +819,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tpbui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tpbui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="My" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UiBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Default" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tpbui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tpbui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="My" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UiBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Category" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tpbui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tpbui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="My" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UiBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
+              <option name="myItemId" value="Utility" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -905,20 +901,55 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tpbui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tpbui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tpbui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tpbui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cache" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="editor.preferences.appearance" />
+    <property name="recentsLimit" value="5" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../trading" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -996,14 +1027,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13767342" sideWeight="0.6707589" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14247599" sideWeight="0.6707589" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39955357" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -1084,18 +1115,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="108" selection-end="108" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/My/UiBundle/Resources/views/Default/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/security.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -1117,7 +1136,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/My/UiBundle/Manager/TorrentManager.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="18" selection-start="868" selection-end="868" vertical-scroll-proportion="-0.65384614">
+        <state line="38" column="18" selection-start="868" selection-end="868" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1141,13 +1160,6 @@
         <state line="19" column="30" selection-start="384" selection-end="384" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/My/UiBundle/Utility/Scraper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="38" selection-start="257" selection-end="257" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="0" selection-start="156" selection-end="156" vertical-scroll-proportion="0.0">
@@ -1155,37 +1167,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/My/UiBundle/Entity/Category.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="10" selection-start="619" selection-end="619" vertical-scroll-proportion="0.33248082">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/My/UiBundle/Controller/CategoryController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="45" selection-start="1322" selection-end="1322" vertical-scroll-proportion="-13.423077">
+        <state line="46" column="45" selection-start="1322" selection-end="1322" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/My/UiBundle/Resources/views/Default/navigation.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="34" selection-start="2696" selection-end="2696" vertical-scroll-proportion="0.37301588">
+        <state line="46" column="34" selection-start="2696" selection-end="2696" vertical-scroll-proportion="0.04509284">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/My/UiBundle/Controller/DefaultController.php">
+    <entry file="file://$PROJECT_DIR$/src/My/UiBundle/DependencyInjection/Configuration.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="69" selection-start="1329" selection-end="1329" vertical-scroll-proportion="0.4282116">
+        <state line="21" column="0" selection-start="641" selection-end="641" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/My/UiBundle/Manager/CategoryManager.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="55" selection-start="2434" selection-end="2434" vertical-scroll-proportion="0.5104167">
+        <state line="78" column="49" selection-start="2552" selection-end="2552" vertical-scroll-proportion="0.044386424">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/My/UiBundle/Entity/Category.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="10" selection-start="619" selection-end="619" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/My/UiBundle/Entity/Uploader.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="7" selection-start="1149" selection-end="1149" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/My/UiBundle/Utility/Scraper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="38" selection-start="257" selection-end="257" vertical-scroll-proportion="0.043589745">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/My/UiBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="0" selection-start="884" selection-end="884" vertical-scroll-proportion="0.9141414">
           <folding />
         </state>
       </provider>

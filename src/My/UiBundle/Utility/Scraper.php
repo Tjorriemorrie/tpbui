@@ -12,7 +12,7 @@ class Scraper
     public function run(Category $category, $page)
 	{
         //die(var_dump(func_get_args()));
-		$url = 'http://thepiratebay.sx/browse/' . $category->getCode() . '/' . --$page . '/7';
+		$url = 'http://thepiratebay.se/browse/' . $category->getCode() . '/' . --$page . '/7';
 		$html = file_get_contents($url);
 //		die(var_dump($html));
 
