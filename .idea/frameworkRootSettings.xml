@@ -5,7 +5,6 @@
       <list>
         <element elementPath="$PROJECT_DIR$/app" typeId="app_directory" />
         <element elementPath="$PROJECT_DIR$/src" typeId="src_directory" />
-        <element elementPath="$PROJECT_DIR$/vendor" typeId="vendor_directory" />
         <element elementPath="$PROJECT_DIR$/web" typeId="web_directory" />
       </list>
     </option>
