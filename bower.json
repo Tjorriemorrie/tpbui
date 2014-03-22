@@ -1,0 +1,23 @@
+{
+  "name": "tpbui",
+  "version": "2.0.0",
+  "homepage": "https://github.com/Tjorriemorrie/tpbui",
+  "authors": [
+    "Tjorriemorrie <jacoj82@gmail.com>"
+  ],
+  "description": "The Pirate Bay scraper",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": ">=1 <2",
+    "angular-route": ">=1 <2",
+    "localforage": "~0.2.0"
+  }
+}

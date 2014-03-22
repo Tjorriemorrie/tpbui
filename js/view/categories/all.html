@@ -1,0 +1,4 @@
+<p>Browse</p>
+<ul ng-repeat="group in categories">
+    <li ng-repeat="item in group.children"><a ng-href="#/{{ item.code }}">{{ item.code }} {{ item.name }}</a></li>
+</ul>

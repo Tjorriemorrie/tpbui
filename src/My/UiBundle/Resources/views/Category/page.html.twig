@@ -1,6 +1,0 @@
-<fieldset data-page="{{ page }}">
-    <legend>Page {{ page }}</legend>
-    {% for torrent in torrents %}
-        {% include 'MyUiBundle:Category:torrent.html.twig' with {torrent: torrent} %}
-    {% endfor %}
-</fieldset>
