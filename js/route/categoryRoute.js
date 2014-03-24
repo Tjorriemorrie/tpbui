@@ -6,8 +6,8 @@ angular.module('app').config(function($routeProvider) {
             templateUrl: 'js/view/categories/all.html',
             controller: 'categoryAllController',
             resolve: {
-                categories: function(categories) {
-                    return categories.findAll();
+                categories: function(categoryManager) {
+                    return categoryManager.findAll();
                 }
             }
         })
@@ -16,8 +16,8 @@ angular.module('app').config(function($routeProvider) {
             templateUrl: 'js/view/categories/browse.html',
             controller: 'categoryBrowseController',
             resolve: {
-                category: function(categories, $route) {
-                    return categories.find($route.current.params.code);
+                category: function($route, categoryManager) {
+                    return categoryManager.find($route.current.params.code);
                 }
             }
         })

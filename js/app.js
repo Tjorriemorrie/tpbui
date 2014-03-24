@@ -4,21 +4,25 @@ window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndex
 window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
 window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
 
-var openRequest = indexedDB.open('tpbui', 1);
+var version = 1;
+var loadFixtures = false;
+var openRequest = indexedDB.open('tpbui', version);
 
 openRequest.onupgradeneeded = function(e) {
-    console.warn('idb onupgradeneeded', 1);
+    console.warn('idb onupgradeneeded', version);
     var db = e.target.result;
-    setUpCategory(db);
+    setUpStores(db);
 };
 
 openRequest.onsuccess = function(e) {
     var db = e.target.result;
-    console.info('idb onsuccess', db);
     app.constant('DB', db);
-    angular.element(document).ready(function() {
-        angular.bootstrap(document, ['app']);
-    });
+    console.info('idb onsuccess', db);
+    if (loadFixtures) {
+        loadCategoryFixtures(db);
+    } else {
+        bootstrap();
+    }
 };
 
 openRequest.onerror = function(e) {
@@ -26,20 +30,35 @@ openRequest.onerror = function(e) {
     console.error('idb onerror', e.target.error.message);
 };
 
-function setUpCategory(db) {
-    if (!db.objectStoreNames.contains('category')) {
-        var status = db.createObjectStore('category', { keyPath: 'code' });
-        status.transaction.oncomplete = function(event) {
-            console.info('idb created objectStore category');
-            loadCategoryFixtures(db);
-        };
-    }
+function bootstrap() {
+    console.info('bootstrap');
+    angular.element(document).ready(function() {
+        angular.bootstrap(document, ['app']);
+    });
+}
+
+function setUpStores(db) {
+    var storeTorrent = db.createObjectStore('torrent', { keyPath: 'id' });
+    storeTorrent.createIndex('category', 'category', { unique: false });
+    console.info('set up torrent', storeTorrent);
+
+    var storeCategory = db.createObjectStore('category', { keyPath: 'code' });
+    console.info('set up category', storeCategory);
+    loadFixtures = true;
 }
 
 function loadCategoryFixtures(db) {
+    console.info('load category fixtures');
+    var total = fixtureCategories.length;
     var store = db.transaction('category', 'readwrite').objectStore('category');
     for (var i in fixtureCategories) {
-        store.add(fixtureCategories[i]);
+        store.add(fixtureCategories[i]).onsuccess = function(event) {
+            //console.info('added', total, fixtureCategories[i]);
+            total--;
+            if (total < 1) {
+                bootstrap();
+            }
+        };
     }
 }
 
