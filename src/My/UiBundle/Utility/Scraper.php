@@ -3,6 +3,7 @@
 namespace My\UiBundle\Utility;
 
 use My\UiBundle\Entity\Category;
+use Buzz\Browser;
 
 class Scraper
 {
@@ -13,8 +14,12 @@ class Scraper
 	{
         //die(var_dump(func_get_args()));
 		$url = 'http://thepiratebay.se/browse/' . $category->getCode() . '/' . --$page . '/7';
-		$html = file_get_contents($url);
-//		die(var_dump($html));
+        $browser = new Browser();
+        $response = $browser->get($url);
+//        die(var_dump($response));
+//        $html = gzdecode($response->getContent());
+        $html = $response->getContent();
+//        die($html);
 
 		$table = substr($html, strpos($html, '<table id="searchResult">'));
 		$table = substr($table, 0, strpos($table, '</table>'));
